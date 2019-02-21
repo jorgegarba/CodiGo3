@@ -1,0 +1,104 @@
+<!-- Tipo De Documento HTML5 -->
+<!DOCTYPE html>
+<!-- html -->
+<html>
+<!-- Aqui va todo el contenido de una pagina web -->
+	<head>
+		<!-- parte no visual o de configuracion -->
+		<!-- Titulo en la pestaña -->
+		<title> Mi primera Web </title>
+		<!-- METADATA o configuración para el navegador y los
+			motores de busqueda-->
+		<!-- Configuración de caracteres -->
+		<meta charset="utf-8"/>
+		<meta name="description" content="Esta es una pagina de ventas"/>
+		<meta name="keywords" content="calzado, zapatillas, zapatos">
+
+	</head>
+	<body>
+		<!-- parte visual de una web-->
+		<!-- cabecera, logo, etc -->
+		<!-- atributos globales -->
+		<!-- id: identificador único de un elemento o etiqueta -->
+		<!-- class: identificador de un grupo de elemento -->
+		<header id="cabecera" class="">
+			<h1>Logo o Titulo de la página</h1>
+		</header>
+		<!-- Barra de navegación -->
+		<nav id="" class="">
+			<!-- enlaces -->
+			<a href="http://www.google.com">Home</a>
+			|
+			<!-- ./ => ruta actual del archivo en el que nos
+			encontramos -->
+			<!-- ../ => subir una carpeta del archivo actual -->
+			<a href="./productos.html">Productos</a>
+			|
+			<a href="./contacto/contacto.html">Contacto</a>
+			|
+			<!-- target = especifica dónde se abre el enlace -->
+			<!-- por defecto, target tiene el valor de _self -->
+			<!-- _self => el enlace se abre en la misma página -->
+			<!-- _blank => el enlace se abre en una nueva página -->
+			<a href="../ejemplo.html" target="_blank">Ejemplo de H's</a>
+			|
+			<a href="#footer">Al Footer</a>
+			|
+			<a href="./02-imagenes.html">Imagenes</a>
+		</nav>
+		<!-- Contenido principal de la página -->
+		<main id="" class="">
+			<section id="noticias">
+				<article>
+					texto del articulo 1
+				</article>
+				<article>
+					texto del articulo 2
+				</article>
+			</section>
+			<section id="noticiaslocales">
+				<em>ENFASIS AQUÍ</em> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+				tempor <strong>STRONG AQUI</strong> incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,quis <i>EXPRESIÓN AQUÍ</i>nostrud exercitation <u>SUBRAYADO AQUI</u> ullamco laboris nisi ut <b>BOLD AQUI</b> aliquip ex ea commodo
+			</section>
+			
+			<section>
+				
+				<div class="libros">Libro: La Iliada</div>
+				<div class="libros">Libro: La Divina Comedia</div>
+				<div class="libros">Libro: El amor en los tiempos de Cólera</div>
+
+			</section>
+			
+			<section>
+				<time datetime="2019-02-18"> Arequipa 18 de Febrero 2019</time>
+				<br/>
+				<!-- etiqueta para representar codigo -->
+				<code>
+					var a = 9;
+				</code>
+
+
+			</section>
+
+			<aside>
+				<!-- eitqueta parrafo -->
+				<p>Cita del articulo 1</p>
+				<!-- Etiqueta de Salto de Linea -->
+				<br/>
+				<p>Cita del articulo 2</p>
+				<p>REFERENCIA</p>
+				
+				<pre>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm
+
+					tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+				</pre>
+			</aside>
+		</main>
+		<footer id="footer">
+			CodiGo 2019 - Tecsup - Arequipa - Perú - Tierra - Via Lactea - <a href="#cabecera">Arriba</a>
+
+		</footer>
+		
+	</body>
+</html>

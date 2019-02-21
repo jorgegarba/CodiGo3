@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Formularios</h1>
+    <hr/>
+    <!-- Conjunto de elementos para ingresar gatos -->
+    <!-- action => ruta o direccion de destino hacia
+    donde los datos del formulario serán enviados -->
+    <!-- METHOD GET=> Verbo HTTP para enviar los datos a través
+    de la URL (VISIBLE por el usuario)-->
+    <!-- METHOD POST=> Verbo HTTP para enviar los datos a través
+    del servidor (INVISIBLE por el usuario) -->
+    <form action="./procesar.html" method="GET">
+        <p>
+            <!-- text=> ingreso de texto -->
+            <!-- for => el id del input al que le perteenece -->
+            <label for="idnombres">Nombre:</label>
+            <input  type="text"
+                    name="nombres"
+                    id="idnombres"
+                    required
+                    minlength="10"
+                    maxlength="20"
+                    placeholder="Ingrese su nombre Ejm: Jhon Doe o Juan Pérez">
+
+        </p>
+        <p>
+            <label>Edad:</label>
+            <input  type="number"
+                    name="edad"
+                    required
+                    min="17"
+                    max="60"
+                    value="17">
+        </p>
+        <p>
+            <label>Email:</label>
+            <input type="email" name="email" required/>
+        </p>
+        <p>
+            <label>Fecha de Nacimiento:</label>
+            <input type="date" name="fecha" required>
+        </p>
+        <p>
+            <label>Contraseña:</label>
+            <input  type="password"
+                    name="password"
+                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                    title="Minimo 8 caracteres, que tenga 1 número, 1 minúscula y 1 mayúscula"
+                    required >
+        </p>
+        <p>
+            <label for="masc">Masculino</label>
+            <input type="radio" name="genero" id="masc" value="m">
+            <label for="fem">Femenino</label>
+            <input type="radio" name="genero" id="fem" value="f">
+            <label for="ne">No Especifica</label>
+            <input type="radio" name="genero" id="ne" value="n" checked>
+        </p>
+        <p>
+            <label for="comedia">Comedia</label>
+            <input type="checkbox" name="comedia" value="com" id="comedia" checked>
+
+            <label for="accion">Acción</label>
+            <input type="checkbox" name="accion" value="acc" id="accion">
+
+            <label for="terror">Terror</label>
+            <input type="checkbox" name="terror" value="terr" id="terror">
+        </p>
+
+        <p>
+            <label for="mensaje">Mensaje</label>
+            <textarea   name="mensaje"
+                        id="mensaje"
+                        cols="30"
+                        rows="10"
+                        placeholder="Ingrese su mensaje..."></textarea>
+        </p>
+        <p>
+            <label for="distrito">Distrito</label>
+            <select name="distrito" id="distrito">
+                <option value="0">Seleccione...</option>
+                <option value="1">Miraflores</option>
+                <option value="2">Paucarpata</option>
+                <option value="3">Cayma ENACE</option>
+            </select>
+        </p>
+        <p>
+            <!-- submit => enviar los datos del formulario -->
+            <input type="submit" value="Iniciar Sesión">
+        </p>
+    </form>
+
+</body>
+</html>
