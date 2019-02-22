@@ -1,3 +1,41 @@
+@font-face{
+    font-family: "harry";
+    src: url('./font/HARRYP__.TTF');
+}
+
 #fontfamily{
     font-family: Cursive;
+}
+#fontsize{
+    font-size: 25px;
+}
+#fontweight{
+    font-weight: 600;
+}
+#fontstyle{
+    font-style: italic;
+}
+#font{
+    font:bold 24px Arial, sans-serif;
+}
+#textalign{
+    text-align: right;
+}
+#textindent{
+    text-indent: 10px;
+}
+#letterspacing{
+    letter-spacing:6px;
+}
+#wordspacing{
+    word-spacing: 8px;
+}
+#lineheight{
+    line-height: 12px;
+}
+#textdecoration{
+    text-decoration: none;
+}
+#customfont{
+    font-family: 'harry';
 }
