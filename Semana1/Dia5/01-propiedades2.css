@@ -1,0 +1,22 @@
+/* body{
+    background: linear-gradient(to bottom, #3e5151, #decba4);
+} */
+
+#rgb{
+    color: rgb(255,83,13);
+}
+
+#hex{
+    color: #37fa2c;
+}
+#rgba{
+    color: rgba(234, 122, 204, 0.9);
+}
+
+#tamanio{
+    width: 500px;
+    height: 100px;
+    border: 1px solid red;
+    overflow: scroll;
+    overflow-x: scroll;
+}

@@ -1,0 +1,16 @@
+#div1{
+    /* border-width => incluye los 4 lados*/
+    /* border-top-width: 1px;
+    border-bottom-width: 2px;
+    border-right-width: 3px;
+    border-left-width: 4px;
+    border-color: #ff0000; */
+    /* style=> solid, dotted, dashed, double, groove, ridge */
+    /* border-bottom-style */
+    /* border-left-style */
+    /* border-right-style */
+    /* border-top-style */
+    /* border-style: solid; */
+    border: 2px solid blue;
+    border-radius: 20px 10px 15px 50px;
+}

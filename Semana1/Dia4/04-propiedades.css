@@ -38,4 +38,5 @@
 }
 #customfont{
     font-family: 'harry';
+    user-select: none;
 }
