@@ -1,0 +1,54 @@
+/* before inyecta un elemento antes del elemento seleccionado */
+#contenido::before {
+    content: ">";
+    color: green;
+}
+#contenido::after {
+    content: "z";
+}
+
+header{
+    border: 1px solid red;
+    background-color: #ff4422;
+    margin: 30px;
+    padding: 10px;
+    text-align: center;
+    /* animation: [nombre_de_animacion]
+                  [tiempo] [funcion_bezier] [delay]
+                  [nro_veces_a_repetir | infinite]
+                  [sentido_de_ejecucion | normal | reverse]
+                  [forma_de_finalizacion | none]*/
+    animation-name: mianimacion;
+    animation-duration: 5s;
+    animation-timing-function: ease-in-out;
+    animation-delay: 0;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: none;
+}
+@keyframes mianimacion{
+    0% {
+        background-color: #ff4422;
+    }
+    50%{
+        background-color: #aa77ff;
+        transform: scale(0.1) rotate(360deg);
+    }
+    100%{
+        background-color: #ff4422;
+    }
+}
+
+html{
+    font-size: 16px;
+}
+#div1{
+    /* 1.5 rem = 24px */
+    font-size: 1.5rem; 
+}
+#parrafo{
+    /* 1 em = 24px por heredar el tamaño relativo de su
+    padre directo */
+    /* 1.5 em = 36px */
+    font-size: 1.5em;
+}

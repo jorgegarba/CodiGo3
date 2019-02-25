@@ -1,0 +1,28 @@
+/* Transformaciones */
+/* scale(x,y) => cambiar el tamaño del elemento */
+/* rotate(angulo[30deg]) => rota el elemento dado un numero en grados*/
+/* translate(x,y) => mueve el elemento desde su posición original*/
+/* skew(angulo[30deg]) => incluna el elemento*/
+/* OBS => para aplica mas de una transformacion, deben incluirse todas
+en una misma linea */
+header{
+    margin-top: 40px;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid black;
+    /* transform: scale(1.5); 
+    transform: translate(9px, 100px); */
+    /* transform: rotate(45deg) translate(9px, 100px) scale(1.5); */
+    transition-duration: 0.5s;
+    /* delay > tiempo para que se ejecute la animacion */
+    transition-delay: 1s;
+    /* Curva de BEZIER => ease-in-out | step-end | ease | step-start */
+    transition-timing-function: ease-in-out;
+
+}
+/* hover asigna el estilo indicado cuando el mouse pasa sobre el elemento*/
+header:hover{
+    transform: scale(1.3);
+    
+}
+

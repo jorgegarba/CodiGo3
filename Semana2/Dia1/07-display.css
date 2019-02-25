@@ -1,0 +1,19 @@
+/* display */
+/* Todos los elementos estructurales de HTML */
+/* definen la propiedad display en BLOCK */
+/* header, footer, main, section, aside, p, div*/
+/* block => El elemento ocupara todo el ancho de la panntalla */
+/* inline => El elemento ocupa solo el ancho de su espacio en una misma
+linea*/
+/* inline-block => El elemento ocupa el ancho de su espacio en una misma
+linea pero respeta sus atributos de width y height*/
+ *{
+     margin: 0;
+     padding: 0;
+ }
+ div{
+     border: 1px solid green;
+     display: inline-block;
+     width: 49%;
+     height: 100px;
+ }

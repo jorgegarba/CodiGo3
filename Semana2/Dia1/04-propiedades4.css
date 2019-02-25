@@ -1,0 +1,41 @@
+header{
+    border: 1px solid rgb(0, 0, 0);
+    /* sombra interna */
+    /* box-shadow: rgb(123, 123, 123) 5px 5px 5px inset; */
+    box-shadow: rgb(123, 123, 123) 5px 5px 5px;
+    /* gradiente */
+    /* prefijo webkit => CHROME y SAFARI */
+    /* prefijo moz => Mozilla */
+    /* prefijo o => Opera */
+    /* background: -webkit-linear-gradient(top right, #cc3421, #aa43f5); */
+    /* background: -webkit-linear-gradient(top, transparent, #AA43F5); */
+
+    /* gradiente radial */
+    /* ELLIPSE o CIRCLE */
+    background: -webkit-radial-gradient(right, ELLIPSE, transparent, #AA43F5);
+
+}
+body{
+    background-image: url('../../Semana1/Dia5/img/textura.jpg');
+}
+h1{
+    text-shadow: rgb(123, 123, 123) 5px 5px 5px;
+    /* -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #ff0000; */
+}
+/* FILTROS */
+/* blur => difuminado valores de 1px a 10px */
+/* grayscale => convierte los colores de una imagen a escala de grises valores de 0.1 a 1 */
+/* invert => invierte los colores y produce un negativo valors de 0.1 a 1*/
+/* opacity => cambia la opacidad del elemento valores de 0=transparente a 1=opaco */
+/* brightness => cambia el brillo de la imagen valoes de 0.1 a 10*/
+section{
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid black;
+    filter: blur(0.1px);
+    opacity: 0.5;
+}
+#imagen{
+    filter: grayscale(1);
+}
