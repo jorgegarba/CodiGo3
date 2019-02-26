@@ -1,0 +1,21 @@
+*{
+    margin:0;
+    padding: 0;
+}
+
+body *{
+    border: 1px solid tomato;
+}
+
+img{
+    float: right;
+    clear: both;
+}
+#clear{
+    /* clear => rellena el espacio a los costados de un elemento float */
+    clear: both;
+}
+.contenedor{
+    border: 1px solid blue;
+    background-color: rgba(190, 190, 190, 0.5);
+}

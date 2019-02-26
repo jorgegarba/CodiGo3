@@ -14,6 +14,6 @@ linea pero respeta sus atributos de width y height*/
  div{
      border: 1px solid green;
      display: inline-block;
-     width: 49%;
+     width: 50%;
      height: 100px;
  }
