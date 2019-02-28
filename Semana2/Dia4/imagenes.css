@@ -4,6 +4,7 @@ article{
 
 article img{
     width: 100%;
+    max-width: 800px;
 }
 #imagen2{
     background: url('http://placehold.it/300x300/') no-repeat;

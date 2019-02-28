@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <title>Este texto es el título del documento</title>
     <meta charset="utf-8">
     <meta name="description" content="Este es un documento HTML5">
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <link rel="stylesheet" href="./estilos.css">
+    
 </head>
-
 <body>
     <header id="cabeceralogo">
         <div>
             <h1>Este es el título</h1>
         </div>
     </header>
+    <nav id="menuicono">
+        <img src="./img/menu.png"
+                width="35"
+                height="28"
+                id="menu-img"
+                alt="">
+    </nav>
     <nav id="menuprincipal">
         <div>
             <ul id="listamenu">
@@ -52,7 +58,8 @@
                     </time>
                     <p>Este es el texto de mi segundo artículo</p>
                     <figure>
-                        <img src="http://placehold.it/300x300/">                    </figure>
+                        <img src="http://placehold.it/300x300/">
+                    </figure>
                 </article>
             </section>
             <aside id="infoadicional">
@@ -82,6 +89,24 @@
             <div class="recuperar"></div>
         </div>
     </footer>
+    <script>
+        var visible = false;
+        // guardamos en una variable al elemento nav>img()
+        // al elemento img que está dentro de nav
+        var menuimg = document.getElementById("menu-img");
+        // funcion que se ejecuta cuando hacemos click en la imagen
+        // del icono
+        menuimg.addEventListener("click" , function(){
+            var menuprincipal = document.getElementById("menuprincipal");
+            if(visible == false){
+                menuprincipal.style.display = "block";
+                visible = true;
+            }else{
+                menuprincipal.style.display = "none";
+                visible = false;
+            }
+        });
+    </script>
 </body>
 
 </html>
