@@ -1,0 +1,20 @@
+article{
+    border: 1px solid red;
+}
+
+article img{
+    width: 100%;
+}
+#imagen2{
+    background: url('http://placehold.it/300x300/') no-repeat;
+    width:300px;
+    height:300px;
+}
+@media(max-width:500px){
+    #imagen2{
+        background: url('http://placehold.it/100x100/') no-repeat;
+    }
+    #imagen{
+     content: url('http://placehold.it/100x100/');   
+    }   
+}
