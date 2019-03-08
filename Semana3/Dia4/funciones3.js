@@ -26,6 +26,17 @@ console.log(`Resultado => ${sumar(sumar(3,6),sumar(7,9))}`);
 //  * 
 // solo se pueden usar sumas y restas
 // la funcion debe retornar el producto
+console.log("//MULTIPLICACION CON SUMAS");
+function multiplicar(a,b){
+    var suma = 0;
+    for(let i = 0; i < b; i++){
+        suma = suma + a;
+    }
+    console.log(suma);
+}
+multiplicar(4,5);
+
+
 
 
 // Realizar una funcion que dados el dividendo y el divisor
@@ -33,4 +44,15 @@ console.log(`Resultado => ${sumar(sumar(3,6),sumar(7,9))}`);
 // sin usar el signo / ni  % ni mod ni nada
 // solo sumas y/o restas
 // la funcion debe retornar el cociente y el residuo
+console.log("Division con restas");
+
+let D = 20;
+let d = 6;
+let q = 0;
+while(D >= d){
+    D = D - d;
+    q++;
+}
+console.log(`q => ${q}`);
+console.log(`r => ${D}`);
 
