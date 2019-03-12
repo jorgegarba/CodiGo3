@@ -1,1 +1,0 @@
-1. Crear una clase llamada Persona 
