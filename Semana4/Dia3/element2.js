@@ -71,6 +71,7 @@ for(let i = 0 ; i < n; i++){
     tdCant.innerHTML = xcant;
 
     let tdDesc = document.createElement("td");
+    tdDesc.setAttribute("productCode","584663");
     let xdesc = prompt(`Ingrese la descripción del item ${i+1}`);
     tdDesc.innerHTML = xdesc;
 
@@ -103,3 +104,22 @@ tdMontoFinal.innerHTML = `S/. ${pFinal}`;
 trFinal.appendChild(tdTituloFinal);
 trFinal.appendChild(tdMontoFinal);
 tabla.appendChild(trFinal);
+
+
+// setAttribute("atributo","valorDelAtributo");
+tabla.setAttribute("id","miTabla");
+tabla.setAttribute("qwerty","9");
+// removeAttribute("atributo"); eliminar un atributo del
+// elemento
+tabla.removeAttribute("qwerty");
+// getAttribute("atributo");
+// toma el valor del atributo indicado
+console.log(tabla.getAttribute("id"));
+
+// lastChild => ultimo elemento hijo de un elemento
+console.log(tabla.lastChild);
+// firstChild => primer elemento hijo de un elemento
+console.log(tabla.firstChild);
+// childNodes => devuelve todos los elementos hijos
+// de un elemento
+console.log(tabla.childNodes);
