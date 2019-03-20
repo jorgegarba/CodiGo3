@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./tareaFactura.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="div1">
+        <label for="">Nombre:</label>
+        <input type="text" id="inputNombre">
+
+        <label for="">Fecha:</label>
+        <input type="date" id="inputFecha">
+
+        <label for="">RUC:</label>
+        <input type="text" id="inpuRUC">
+    </div>
+    <div class="div2">
+        <label for="">Cantidad:</label>
+        <input type="text" id="inputCantidad">
+
+        <label for="">Descripcion:</label>
+        <input type="text" id="inputDescripcion">
+
+        <label for="">Categoria:</label>
+        <select name="" id="selectCategoria">
+            <option value="e">Electrodomestico</option>
+            <option value="c">Calzados</option>
+            <option value="j">Juguetes</option>
+        </select>
+
+        <label for="">P. Unitario:</label>
+        <input type="number" id="inputPUnitario">
+
+        <button id="btnAgregar">Agregar</button>
+
+    </div>
+    <div class="div3">
+        <table border="1" id="tabla">
+            <thead>
+                <tr>
+                    <th>Nro.</th>
+                    <th>Cant.</th>
+                    <th>Descripción</th>
+                    <th>P. Unitario</th>
+                    <th>P. Subtotal</th>
+                </tr>
+            </thead>
+        </table>
+    </div>
+</body>
+</html>

@@ -7,7 +7,7 @@ window.addEventListener("load",function(){
     // valor => es el valor que le pertenecerá a dicha clave.
     localStorage.setItem("nombre","Jorge Luis");
     //getItem([clave])=> obtiene un valor dada una clave
-    document.querySelector("body").innerHTML = localStorage.getItem("nombre");
+    // document.querySelector("body").innerHTML = localStorage.getItem("nombre");
     //removeItem([clave])=> borra una clave del LocalStorage
     localStorage.removeItem("nombre");
     // Creando un objeto que represente a una factura
@@ -24,6 +24,8 @@ window.addEventListener("load",function(){
                         nombre:"Refrigerador"
                     }]
     };
+
+    
     // JSON.stringify([objeto])=> convierte el objeto a una cadena o string
     // Es necesario realizar este paso ya que el localStora, acepta strings solamente
     let facturaString = JSON.stringify(factura);
@@ -33,4 +35,22 @@ window.addEventListener("load",function(){
     let facturaStorageString = localStorage.getItem("factura");
     let facturaStorageJSON = JSON.parse(facturaStorageString);
     console.log(facturaStorageJSON);
+
+
+    var boton = document.getElementById("btn");
+    var link = document.getElementById("link");
+
+    boton.addEventListener("click",function(evento){
+        //preventDefault => anula cualquier accion por 
+        //defecto que se realice al hacer click a un
+        //elemento
+        evento.preventDefault();
+    });
+
+    link.addEventListener("click",function(evento){
+        evento.preventDefault();
+    });
+
+
+
 });
