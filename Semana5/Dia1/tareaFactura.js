@@ -60,15 +60,36 @@ window.addEventListener("load",function(){
 
             let xtdPTotal = document.createElement("td");
             xtdPTotal.innerHTML = factura.productos[i].pstotal;
+
+            let xtdButton = document.createElement("td");
+            let xbutton = document.createElement("button");
+            xbutton.innerHTML = "Eliminar";
+            xbutton.setAttribute("pos", i+1);
+            xbutton.addEventListener("click",function(evento){
+                let posicion = evento.target.getAttribute("pos");
+                factura.productos.splice(posicion-1,1);
+                localStorage.setItem("factura",JSON.stringify(factura));
+                // window.location.reload();
+                for(let i = xtabla.children.length-1; i>0; i--){
+                    xtabla.deleteRow(i);
+                }
+                dibujarTablaConStorage();
+            });
+            
+            xtdButton.appendChild(xbutton);
+
+            // xtdButton.innerHTML = "<button>Eliminar</button>";
             
             xtr.appendChild(xtdNro);
             xtr.appendChild(xtdCantidad);
             xtr.appendChild(xtdDescripcion);
             xtr.appendChild(xtdPUnitario);
             xtr.appendChild(xtdPTotal);
+            xtr.appendChild(xtdButton);
 
             xtabla.appendChild(xtr);
         }
+        agregarTotal();
     }
 
     //asignando el evento click al boton agregar
@@ -104,12 +125,29 @@ window.addEventListener("load",function(){
         let xtdPTotal = document.createElement("td");
         xtdPTotal.innerHTML = detalle.pstotal;
 
+        let xtdButton = document.createElement("td");
+        let xbutton = document.createElement("button");
+        xbutton.innerHTML = "Eliminar";
+        xbutton.setAttribute("pos", xtrsActuales.length);
+        xbutton.addEventListener("click",function(evento){
+            let posicion = evento.target.getAttribute("pos");
+            factura.productos.splice(posicion-1,1);
+            localStorage.setItem("factura",JSON.stringify(factura));
+            // window.location.reload();
+            for(let i = xtabla.children.length-1; i>0; i--){
+                xtabla.deleteRow(i);
+            }
+            dibujarTablaConStorage();
+        });
+        xtdButton.appendChild(xbutton);
+
         //agregando las columnas(td-s) a la fila(tr)
         xtr.appendChild(xtdNro);
         xtr.appendChild(xtdCant);
         xtr.appendChild(xtdDescripcion);
         xtr.appendChild(xtdPUnitario);
         xtr.appendChild(xtdPTotal);
+        xtr.appendChild(xtdButton);
         // Agregando la fila(tr) a la tabla (table)
         xtabla.appendChild(xtr);
         
@@ -121,6 +159,17 @@ window.addEventListener("load",function(){
         localStorage.setItem("factura",JSON.stringify(factura));
 
     });
+
+    //funcion para agregar el total
+    function agregarTotal(){
+        var total = 0;
+        for(let i=0 ; i<factura.productos.length;i++){
+            total = total + factura.productos[i].pstotal;
+        }
+        var trTotal = document.createElement("tr");
+        trTotal.innerHTML=`<td colspan='4'>TOTAL</td> <td>${total}</td>`;
+        xtabla.appendChild(trTotal);
+    }
 
     construirFactura();
 
