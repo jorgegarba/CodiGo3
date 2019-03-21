@@ -93,7 +93,7 @@ window.addEventListener("load",function(){
     }
 
     //asignando el evento click al boton agregar
-    xbtnAgregar.addEventListener("click",function(){
+    xbtnAgregar.addEventListener("click", function(){
         //creando el objeto detalle
         //representa a un renglon de nuestra factura(1 item nuevo)
         let detalle = {
