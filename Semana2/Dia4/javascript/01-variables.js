@@ -30,7 +30,6 @@ var verdedero = true;
 var falsa = false;
 
 
-
 console.log(sueldo);
 console.log(verdedero);
 console.log(despedida);
@@ -56,7 +55,5 @@ console.log("division => " + division);
 console.log("multiplicacion => " + multiplicacion);
 
 console.log("modulo (20/7) residuo => " + ( 20 % 7 ) );
-
-
 
 

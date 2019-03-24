@@ -24,7 +24,7 @@
 p span{
     color: blue;
 }
-/* todos los 'p' que sean hijos directos de 'section' */
+/* todos los 'p' que sean hijos directos (primer nivel) de 'section' */
 section > p {
     color: green;
 }
@@ -33,7 +33,3 @@ un h1 */
 h1 + p {
     color: orangered;
 }
-
-
-
-

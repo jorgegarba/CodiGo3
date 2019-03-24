@@ -14,17 +14,18 @@
     de la URL (VISIBLE por el usuario)-->
     <!-- METHOD POST=> Verbo HTTP para enviar los datos a través
     del servidor (INVISIBLE por el usuario) -->
-    <form action="./procesar.html" method="GET">
+    <form method="GET" action="123.html">
         <p>
             <!-- text=> ingreso de texto -->
             <!-- for => el id del input al que le perteenece -->
             <label for="idnombres">Nombre:</label>
             <input  type="text"
-                    name="nombres"
+                    name='nombres'
                     id="idnombres"
                     required
                     minlength="10"
                     maxlength="20"
+                    value="VALOR POR DEFECTO"
                     placeholder="Ingrese su nombre Ejm: Jhon Doe o Juan Pérez">
 
         </p>
@@ -34,6 +35,7 @@
                     name="edad"
                     required
                     min="17"
+                    id="idedad"
                     max="60"
                     value="17">
         </p>
@@ -92,6 +94,7 @@
         <p>
             <!-- submit => enviar los datos del formulario -->
             <input type="submit" value="Iniciar Sesión">
+            <button type="submit">Iniciar Sesion</button>
         </p>
     </form>
 

@@ -22,7 +22,10 @@ section .otraclase{
 .otraclase span{
     color: violet;
 }
-
+/* Todos los elementos 'div' que tengan la clase
+"otraclase" */
+/* Si hubiera otro elemento con la clase 'otraclase'
+no va a ser afectado */
 div.otraclase {
     color: green;
 }

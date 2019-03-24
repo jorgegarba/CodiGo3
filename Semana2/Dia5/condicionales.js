@@ -1,3 +1,4 @@
+'use strict';
 //CONDICIONALES
 //if => si la condicion se cumple
 // else => la condicion no se cumple
@@ -18,20 +19,22 @@
 // resultado verdadero
 // !   | negacion | not
 
+
+
 var edad = 17;
-if(edad == 17){
+if(edad >= 19){
     console.log("Si pásele joven!");
 }else{
-    console.log("No, vaya a limpiarse sus mocos");
+    console.error("No, vaya a limpiarse sus mocos");
 }
-
+debugger;
 // ejemplo de comparadores 
 
 var x = 90;
 var y = 80;
 var z = 15;
 
-if((x/2)>(z*3) || ((z>(y+x)/8) && y!= 81)){
+if( (x/2)>(z*3) || ( (z>(y+x)/8) && y!= 81) ){
     console.log("verdadero");
     
 }else{

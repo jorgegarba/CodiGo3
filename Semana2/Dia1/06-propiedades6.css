@@ -1,10 +1,16 @@
 /* before inyecta un elemento antes del elemento seleccionado */
 #contenido::before {
-    content: ">";
-    color: green;
+    content: "";
+    height: 30px;
+    border: 1px solid red;
+    width: 20px;
 }
 #contenido::after {
-    content: "z";
+    content: " ";
+    height: 30px;
+    border-right: 1px solid red;
+    width: 20px;
+    transform: rotate(10deg);
 }
 
 header{

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        div{
+            border: 1px solid red;
+            position: relative;
+        }
+        #span1{
+            position: absolute;
+            left: 80px;
+        }
+        #span2{
+            position: relative;
+        }
+        #span3{
+            position: fixed;
+            bottom: 0;
+            right: 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span id="span1">
+            texto1
+        </span>
+        <span id="span2">
+            texto2
+        </span>
+            <span id="span3">
+                texto3
+            </span>
+        </div>
+    
+
+</body>
+</html>

@@ -2,7 +2,7 @@ header{
     border: 1px solid rgb(0, 0, 0);
     /* sombra interna */
     /* box-shadow: rgb(123, 123, 123) 5px 5px 5px inset; */
-    box-shadow: rgb(123, 123, 123) 5px 5px 5px;
+    box-shadow: rgb(123, 123, 123) 5px 5px 5px ;
     /* gradiente */
     /* prefijo webkit => CHROME y SAFARI */
     /* prefijo moz => Mozilla */
