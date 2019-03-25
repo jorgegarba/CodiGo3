@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div class="modal fade" id="modalCentrado">
+         <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content">
+                <!-- header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Titulo</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        x
+                    </button>
+                </div>
+                <!-- body -->
+                <div class="modal-body">
+                    <div class="form-group">
+                      <label for=""></label>
+                      <input type="email" class="form-control" name="" id="nombre" aria-describedby="emailHelpId" placeholder="">
+                      <small id="emailHelpId" class="form-text text-muted">Help text</small>
+                    </div>
+                    <table class="table table-contenidostriped table-inverse table-responsive">
+                        <thead class="thead-inverse">
+                            <tr>
+                                <th>contenido</th>
+                                <th>contenido</th>
+                                <th>contenido</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td scope="row">contenido</td>
+                                    <td>contenido</td>
+                                    <td>contenido</td>
+                                </tr>
+                                <tr>
+                                    <td scope="row">contenido</td>
+                                    <td>contenido</td>
+                                    <td>contenido</td>
+                                </tr>
+                            </tbody>
+                    </table>
+                </div>
+                <!-- footer -->
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-danger"
+                            data-dismiss="modal">
+                        Cerrar Modal
+                    </button>
+                    <button type="button"
+                            class="btn btn-success"
+                            data-toggle="modal"
+                            data-target="#modal1"
+                            >
+                        Abrir Modal 1
+                    </button>
+                    <button class="btn btn-warning" id="btnCerrar">
+                        Cerrar modal con JavaScript
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="modal1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <!-- header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Titulo</h4>
+                    <button type="button" class="close" data-dismiss="modal">
+                        x
+                    </button>
+                </div>
+                <!-- body -->
+                <div class="modal-body">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt sequi culpa mollitia repudiandae consectetur tempore, expedita, necessitatibus minus, soluta quia deserunt? Voluptatem aliquid dolorum libero praesentium, aut ipsa! Ipsa, similique.
+                </div>
+                <!-- footer -->
+                <div class="modal-footer">
+                    <button type="button"
+                            class="btn btn-danger"
+                            data-dismiss="modal">
+                        Cerrar Modal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+
+    <div class="container">
+        <button class="btn btn-primary"
+                type="button"
+                data-toggle="modal"
+                data-target="#modal1">Abrir Modal1</button>
+        <hr>
+        <button class="btn btn-primary"
+                type="button"
+                data-toggle="modal"
+                data-target="#modalCentrado">
+                Abrir Modal Centrado
+        </button>
+        
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        var btnCerrar = document.getElementById("btnCerrar");
+        btnCerrar.addEventListener("click",function(){
+            // inputs
+            $('#modalCentrado').modal('hide');
+        });
+    </script>
+</body>
+</html>
