@@ -1,0 +1,36 @@
+.imagen:hover {
+  transform: scale(1.1);
+  box-shadow: 0px 0px 8px gray; }
+
+.naranja {
+  color: #FFA500; }
+
+.texto-grande {
+  font-size: 1.3rem; }
+
+.linea-naranja {
+  width: 100%;
+  background-color: #FFA500;
+  height: 3px; }
+
+.media i {
+  color: #343a49;
+  transition: 0.5s; }
+  .media i:hover {
+    transform: rotate(40deg);
+    -webkit-transform: rotate(40deg); }
+
+.imagen {
+  transition: 0.5s; }
+  .imagen img {
+    border-radius: 2px; }
+
+.contacto {
+  background: url("http://placehold.it/1900x900/343A49/FFA500") no-repeat center center;
+  background-attachment: fixed; }
+  .contacto p {
+    padding: 200px 10px;
+    color: white;
+    font-size: 30px; }
+
+/*# sourceMappingURL=estilos.css.map */
