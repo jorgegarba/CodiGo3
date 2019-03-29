@@ -1,9 +1,14 @@
 window.addEventListener("load",function(){
     var btnAjax = document.querySelector("#btnAjax");
+    var btnAjaxPost = document.querySelector("#btnAjaxPost");
     var cargando = document.querySelector("#carga");
     var tabla = document.querySelector("#tabla");
+    var tbody = document.querySelector("#tbody");
     
     function cargarAJAX(){
+        //limpiando tbody
+        tbody.innerHTML = "";
+
         cargando.removeAttribute("hidden");
         // Creando un obj XMLHttpRequest
         // Imaginemos que xhr tendrá el contenido
@@ -35,8 +40,7 @@ window.addEventListener("load",function(){
                 //JSON.stringify => convierte un JSON a STRING
                 //JSON.parse => convierte un STRING a JSON
                     let jsoncompleto = JSON.parse(xhr.responseText);
-                    let tabla = document.getElementById("tabla");
-                    dibujarFilas(jsoncompleto.data,tabla);
+                    dibujarFilas(jsoncompleto.data,tbody);
                     tabla.removeAttribute("hidden");
                     cargando.setAttribute("hidden","hidden");
             }
@@ -49,17 +53,37 @@ window.addEventListener("load",function(){
         xhr.send(null);
     }
 
-    function dibujarFilas(data,tabla){
+    function traerImagen(imagen,url){
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            switch(xhr.readyState){
+                case 4:
+                    imagen.setAttribute("src",url);
+            }
+        };
+        xhr.open("GET",url);
+        xhr.send(null);
+    }
+
+    function dibujarFilas(data,tbody){
         for(let i=0;i<data.length;i++){
             let tr = document.createElement("tr");
             tr.innerHTML = `<td>${data[i].id}</td>
                             <td>${data[i].first_name}</td>
-                            <td>${data[i].last_name}</td>
-                            <td><img src="${data[i].avatar}"/></td>`;
-            tabla.appendChild(tr);
+                            <td>${data[i].last_name}</td>`;
+            let imagen = document.createElement("img");
+            let tdImagen = document.createElement("td");
+            imagen.setAttribute("src","./cargando.gif");
+            tdImagen.appendChild(imagen);
+            tr.appendChild(tdImagen);
+            tbody.appendChild(tr);
+            traerImagen(imagen,data[i].avatar);
         }
     }
 
     btnAjax.onclick = cargarAJAX;
+
+
+
 
 });
