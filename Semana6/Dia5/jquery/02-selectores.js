@@ -18,6 +18,7 @@ $(function () {
         //estilos al elemento
         $(this).css("border-radius", "10px")
             .css("padding", "20px");
+        // añade la clase "text-white" a todos los elementos p
         $("p").addClass("text-white");
     });
 
@@ -26,8 +27,7 @@ $(function () {
         $("p:eq(0)").addClass("btn")
             .addClass("btn-primary")
             .addClass("btn-block");
-            
+        // borra la clase "text-white" a todos los elementos p
         $("p").removeClass("text-white");
     });
-
 });

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="./jquery-3.3.1.js"></script>
+    <script src="./04-eventos.js"></script>
+    <title>Document</title>
+    <style>
+        html,body{
+            height: 100%;
+        }
+        .cuadradito{
+            height: 300px;
+            width: 300px;
+            background-color: brown;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+        }
+        .cuadradito2{
+            height: 300px;
+            width: 300px;
+            background-color: tomato;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transition: 500ms;
+        }
+        .formulario{
+            position: relative;
+            top:300px;
+            border: 1px solid black;
+            display: inline-block;
+            padding: 50px;
+            box-shadow: 2px 2px 8px gray;
+        }
+        .bolita{
+            height: 30px; width: 30px;
+            position: relative;
+            border-radius: 50%; background-color: crimson;
+            animation: movimiento 20s ease-in-out 0s infinite normal ;
+        }
+        @keyframes movimiento{
+            0%{
+                margin-left: 0%;
+            }
+            50%{
+                margin-left: 50%;
+            }
+            100%{
+                margin-left: 0%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="bolita">
+
+    </div>
+    <div class="cuadradito">
+
+    </div>
+    <div class="cuadradito2">
+
+    </div>
+
+    <div class="formulario">
+        <label for="nombre">Nombre</label>
+        <input type="text"
+                placeholder="Coloque su nombre"
+                id="nombre">
+    </div>
+
+</body>
+</html>
