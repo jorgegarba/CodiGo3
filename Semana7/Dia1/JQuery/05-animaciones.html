@@ -12,14 +12,34 @@
             height: 200px; width: 200px;
             background-color: cornflowerblue;
         }
+        #barra, #relleno{
+            position: absolute;
+            top:300px;
+            height: 30px;
+            border-radius: 5px;
+        }
+        #barra{
+            border: 1px solid tomato;
+            width: 100%;
+        }
+        #relleno{
+            box-shadow: 1px 1px 5px red;
+            background-color: coral;
+        }
     </style>
 </head>
 <body>
     <div>
         <button id="btnAnimar">Animar</button>
     </div>
-    <div class="cuadrado">
+    <div class="cuadrado" id="objetivo">
         
+    </div>
+    <div id="barra">
+
+    </div>
+    <div id="relleno">
+
     </div>
 </body>
 </html>
