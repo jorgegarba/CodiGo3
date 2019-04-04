@@ -6,14 +6,108 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
+    <link rel="stylesheet" href="./jquery-ui-1.12/jquery-ui.min.css">
+    <link rel="stylesheet" href="./jquery-ui-1.12/jquery-ui.structure.min.css">
+    <link rel="stylesheet" href="./jquery-ui-1.12/jquery-ui.theme.min.css">
+
     <script src="./jquery-3.3.1.js"></script>
+    <script src="./jquery-ui-1.12/jquery-ui.min.js"></script>
     <script src="./mijqueryui.js"></script>
     <title>Document</title>
-   
+    <style>
+        .cuadrado{
+            height: 100px;
+            width: 100px;
+            background-color: peru;
+            margin-left: 10px;
+            margin-top:10px;
+            border-radius: 10px;
+        }
+        .ui-sortable-helper{
+            border: 1px solid coral;
+            box-shadow: 0px 0px 8px gray;
+        }
+        ul{
+            width: 200px;
+        }
+        .grande{
+            height: 120px;
+            width: 120px;
+            background-color: peru;
+        }
+        .pequenio{
+            height: 60px;
+            width: 60px;
+            background-color: darkseagreen;
+        }
+
+        .objetivo{
+            height: 150px;
+            width: 150px;
+            background-color: darkslategray;
+        }
+        body{
+            margin-bottom: 300px;
+        }       
+
+    </style>
 </head>
 
 <body>
-    
+    <div class="cuadrado">DIV 1</div>
+    <div class="cuadrado">DIV 2</div>
+    <div class="cuadrado">DIV 3</div>
+
+    <hr>
+
+    <ul class="peliculas">
+        <li>Dumbo</li>
+        <li>La Sirenita</li>
+        <li>Rambo (Jhon)</li>
+        <li>Rocky</li>
+        <li>Harry Potter</li>
+    </ul>
+
+    <hr>
+
+    <div class="grande">
+
+    </div>
+    <div class="pequenio">
+
+    </div>
+
+    <hr>
+
+    <button id="btnAnimar">
+        Animar Elemento
+    </button>
+
+    <div class="objetivo">
+
+    </div>
+
+    <div class="card border-primary">
+      <img class="card-img-top" src="http://placehold.it/400/" id="imagen" title="Puedes darle click a esta imagen =)">
+      <div class="card-body bg-dark text-light" id="body">
+        <h4 class="card-title">Title</h4>
+        <p class="card-text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente non est dolor tenetur maiores sunt aliquid. Sapiente tempora iure ad non fugit distinctio deleniti modi ducimus ea, repellat praesentium sunt?</p>
+      </div>
+    </div>
+
+    <button id="btnModal">
+        Abrir Modal
+    </button>
+
+    <div id="miModal" style="display: none">
+        <div class="card text-left">
+          <img class="card-img-top" src="holder.js/100px180/" alt="">
+          <div class="card-body">
+            <h4 class="card-title">Title</h4>
+            <p class="card-text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eos velit blanditiis quo cupiditate dolorum? Eius, earum minus sapiente fuga accusamus sit accusantium molestias rerum non sequi eos, assumenda pariatur officiis!</p>
+          </div>
+        </div>
+    </div>
 
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
