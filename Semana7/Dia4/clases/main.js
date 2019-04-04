@@ -16,10 +16,13 @@ $(function(){
     // Ejcutnado un getter ES6
     console.log(objVehiculo1.categoria);
 
-    
+
     // Las funciones estaticas son exclusivas de las clases, no de
     // los objetos
     // console.log(objVehiculo1.getFecha().getDay()); ERROR
 
 
+    // Usando la clase camioneta
+    var objCamioneta1 = new Camioneta("ACM-007","Gris","CAMIONETA",true);
+    objCamioneta1.imprimirDatosCamioneta();
 });
