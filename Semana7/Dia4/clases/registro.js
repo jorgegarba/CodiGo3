@@ -13,4 +13,15 @@ class Registro{
         this.regVehiculo = newRegVehiculo;
         this.regId = newRegId;
     }
+
+    getHoraEntrada(){
+        let horaEntrada = "";
+        horaEntrada = this.regFechin.getHours();
+        horaEntrada += ":";
+        horaEntrada += this.regFechin.getMinutes();
+        horaEntrada += ":";
+        horaEntrada += this.regFechin.getSeconds(); 
+        return horaEntrada;
+    }
+
 }
