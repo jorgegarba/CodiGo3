@@ -13,7 +13,7 @@ let getAlumnoById = (id) => {
                 return;
             }
         }
-        reject("Error, no se encontró");
+        reject("Error, no se encontró el alumuno");
     });
 }
 
@@ -30,11 +30,9 @@ let getCursosByAlumno = (objAlumno)=>{
 };
 
 getAlumnoById(1).then((objAlumno)=>{
-    getCursosByAlumno(objAlumno).then((curso)=>{
-        console.log(curso);
-    }).catch((error)=>{
-        console.log(error);
-    });
+    return getCursosByAlumno(objAlumno);
+}).then((cursos)=>{
+    console.log(cursos);
 }).catch((error)=>{
     console.error(error);
 });
