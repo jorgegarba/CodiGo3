@@ -4,6 +4,7 @@ let getNombreYApellidos = ()=>{
             resolve("Jorge Garnica");
         }, 2000);
     });
+    
 };
 
 // async function
