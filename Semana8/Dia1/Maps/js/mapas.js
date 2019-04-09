@@ -1,203 +1,121 @@
 window.onload = () => {
-    var map;
+    
+    var mapaGoogle, miPosicion;
+    var btnColocarMarcador = document.getElementById("btnMiPosicion");
+    var btnQuitarMiPosicion = document.getElementById("btnQuitarMiPosicion");
 
-    let configurarMapa = () => {    
-        map = new google.maps.Map(document.getElementById('mapa'), {
-            center: { lat: -16.51423, lng: -70.316524 },
-            zoom: 10,
-            styles: [
+    let configurarMapa = () => {
+      mapaGoogle = new google.maps.Map(document.getElementById('mapa'), {
+          center: { lat: -16.51423, lng: -70.316524 },
+          zoom: 10,
+          styles: [
+            {
+              "featureType": "road.highway",
+              "elementType": "labels.text",
+              "stylers": [
                 {
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "color": "#f5f5f5"
-                    }
-                  ]
-                },
-                {
-                  "elementType": "labels.icon",
-                  "stylers": [
-                    {
-                      "visibility": "off"
-                    }
-                  ]
-                },
-                {
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#616161"
-                    }
-                  ]
-                },
-                {
-                  "elementType": "labels.text.stroke",
-                  "stylers": [
-                    {
-                      "color": "#f5f5f5"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "administrative.land_parcel",
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#bdbdbd"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "administrative.neighborhood",
-                  "elementType": "geometry.fill",
-                  "stylers": [
-                    {
-                      "color": "#44ae74"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "landscape.natural.landcover",
-                  "elementType": "geometry.fill",
-                  "stylers": [
-                    {
-                      "color": "#160ce7"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "poi",
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "color": "#eeeeee"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "poi",
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#757575"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "poi.park",
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "color": "#e5e5e5"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "poi.park",
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#9e9e9e"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "road",
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "color": "#ffffff"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "road.arterial",
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#757575"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "road.highway",
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "color": "#dadada"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "road.highway",
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#616161"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "road.local",
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#9e9e9e"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "transit.line",
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "color": "#e5e5e5"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "transit.station",
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "color": "#eeeeee"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "water",
-                  "elementType": "geometry",
-                  "stylers": [
-                    {
-                      "color": "#c9c9c9"
-                    }
-                  ]
-                },
-                {
-                  "featureType": "water",
-                  "elementType": "geometry.fill",
-                  "stylers": [
-                    {
-                      "color": "#84b5ea"
-                    },
-                    {
-                      "weight": 4.5
-                    }
-                  ]
-                },
-                {
-                  "featureType": "water",
-                  "elementType": "labels.text.fill",
-                  "stylers": [
-                    {
-                      "color": "#9e9e9e"
-                    }
-                  ]
+                  "color": "#ff3c41"
                 }
               ]
+            },
+            {
+              "featureType": "road.local",
+              "elementType": "geometry.fill",
+              "stylers": [
+                {
+                  "color": "#ff3c41"
+                }
+              ]
+            },
+            {
+              "featureType": "transit.line",
+              "elementType": "geometry.fill",
+              "stylers": [
+                {
+                  "color": "#ff3c41"
+                }
+              ]
+            },
+            {
+              "featureType": "water",
+              "elementType": "geometry.fill",
+              "stylers": [
+                {
+                  "color": "#72c99f"
+                }
+              ]
+            }
+          ],
+      });
+      configurarListeners();
+    };
+
+    let configurarListeners = ()=>{
+      // Añadiendo evento click al mapa de Google
+      mapaGoogle.addListener('click', (coords)=>{
+        // Creando un objeto con las propiedades lat y lng
+        let miLatLng = {
+          lat: coords.latLng.lat(),
+          lng: coords.latLng.lng()
+        };
+        // Creando un marcador de Google con la posición creada en el paso
+        // anterior
+        var marcador = new google.maps.Marker(
+          {
+            position: miLatLng,
+            icon: './img/parking.png',
+            draggable: true
+          }
+        );
+        // Añadiendo el evento doble click al marcador creado
+        marcador.addListener('dblclick',()=>{
+          marcador.setMap(null);
         });
+        // Añadiendo el evento drag al marcador creado
+        marcador.addListener('drag',(coords)=>{
+          console.log("Lat => " + coords.latLng.lat());
+        });
+        // Agregar el marcado al mapa de Google
+        marcador.setMap(mapaGoogle);
+      });
+    };
+
+    /**
+     * Función que colocar un marcador en la posición actual del usuario
+     */
+    let colocarMarcador = () =>{
+      if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition((pos)=>{
+          miPosicion = new google.maps.Marker({
+            position: {
+                        lat: pos.coords.latitude,
+                        lng: pos.coords.longitude
+                      },
+            title: "Aquí estoy"
+          });
+          // Asigna el mapa en el que el marcador, va a aparecer
+          miPosicion.setMap(mapaGoogle);
+          // setCenter => Re-posiciona el campo de visualización del mapa
+          // de Google
+          mapaGoogle.setCenter({
+            lat: pos.coords.latitude,
+            lng: pos.coords.longitude
+          });
+        },(error)=>{
+          console.log(error.message);
+        });
+      }else{
+        alert("Atención, no ha autorizado a acceder a su ubicación");
+      }
     }
+
+    let quitarMiPosicion = () =>{
+      miPosicion.setMap(null);
+    }
+
+    btnColocarMarcador.onclick = colocarMarcador;
+    btnQuitarMiPosicion.onclick = quitarMiPosicion;
 
     configurarMapa();
 
-}
+};
