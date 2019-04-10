@@ -3,6 +3,7 @@ window.onload = () => {
     var mapaGoogle, miPosicion;
     var btnColocarMarcador = document.getElementById("btnMiPosicion");
     var btnQuitarMiPosicion = document.getElementById("btnQuitarMiPosicion");
+    var coordAnterior = null;
 
     let configurarMapa = () => {
       mapaGoogle = new google.maps.Map(document.getElementById('mapa'), {
@@ -53,6 +54,7 @@ window.onload = () => {
     let configurarListeners = ()=>{
       // Añadiendo evento click al mapa de Google
       mapaGoogle.addListener('click', (coords)=>{
+        // ///// INICIO COLOCAR UN MARCADOR
         // Creando un objeto con las propiedades lat y lng
         let miLatLng = {
           lat: coords.latLng.lat(),
@@ -77,6 +79,43 @@ window.onload = () => {
         });
         // Agregar el marcado al mapa de Google
         marcador.setMap(mapaGoogle);
+        // ///// FIN COLOCAR UN MARCADOR
+        
+        if(coordAnterior){
+          var coordPolyline = [
+            coordAnterior,
+            {
+              lat: coords.latLng.lat(),
+              lng: coords.latLng.lng(),
+            }
+          ];
+        }else{
+          var coordPolyline = [
+            {
+              lat: coords.latLng.lat(),
+              lng: coords.latLng.lng(),
+            },
+            {
+              lat: coords.latLng.lat(),
+              lng: coords.latLng.lng(),
+            }
+          ];
+        }
+
+        let miPolyline = new google.maps.Polyline({
+          path: coordPolyline,
+          strokeColor: '#ff0000',
+          strokeWeight: 1,
+        });
+
+        miPolyline.setMap(mapaGoogle);
+        
+        
+        coordAnterior = {
+          lat: coords.latLng.lat(),
+          lng: coords.latLng.lng(),
+        };
+
       });
     };
 
