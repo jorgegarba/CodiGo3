@@ -5,6 +5,7 @@ window.onload = ()=>{
     let btnEliminarCancha = $('#btnEliminarCancha');
     let contenedor = $('#contenedor');
     let btnGuardarCambios = $("#btnGuardarCambios");
+    let btnBuscar = $("#btnBuscar");
 
     let guardarCambios = ()=>{
         let key = $("#inputKey").val();
@@ -19,7 +20,6 @@ window.onload = ()=>{
         });
 
     }
-
     let iniciarFirebase = ()=>{
         var config = {
             apiKey: "AIzaSyDAnKb9WRkacwHQt-VCsJSI08oXF6FjK5Q",
@@ -124,7 +124,17 @@ window.onload = ()=>{
         }).catch((error)=>{
             console.log(error);
         });
-    }
+    };
+    let buscarCancha = (evento)=>{
+        evento.preventDefault();
+        console.log("En buscar");
+        let referencia = firebase.database().ref("canchitas");
+        referencia.equalTo(2).on('value',data=>{
+            // data.forEach(fila=>{
+                console.log(data);
+            // });
+        });
+    };
     // Iniciando Configuración
     iniciarFirebase();
     //asignando el evento click al boton getCanchas
@@ -134,6 +144,8 @@ window.onload = ()=>{
     // asignando el evento click al boton eliminarCancha
     // btnEliminarCancha.click(eliminarCanchaById);
     btnGuardarCambios.click(guardarCambios);
+    //asignando el evento click al boton de busqueda
+    btnBuscar.click(buscarCancha);
 };
 
 var eliminarCanchaById = (id)=>{
