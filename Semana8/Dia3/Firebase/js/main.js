@@ -2,6 +2,9 @@ window.onload = ()=>{
     // Declaración de Variables
     let btnGetCanchas = $("#btnGetCanchas");
     let btnCrearCanchita = $("#btnCrearCanchita");
+    let btnEliminarCancha = $('#btnEliminarCancha');
+    let contenedor = $('#contenedor');
+
     let iniciarFirebase = ()=>{
         var config = {
             apiKey: "AIzaSyDAnKb9WRkacwHQt-VCsJSI08oXF6FjK5Q",
@@ -29,13 +32,34 @@ window.onload = ()=>{
         });
     }
     let imprimirData = data =>{
+        contenedor.html("");
+        let tabla = $("<table></table");
+        tabla.append(`
+            <tr>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Direccion</th>
+            </tr>
+        `);
         data.forEach( fila => {
-            // mostrando el id de cada fila
-            console.log(`ID: ${fila.key}`);
-            // mostrando campos normales
-            console.log(`Nombre: ${fila.val().nombre}`);
-            console.log(`Direccion: ${fila.val().direccion}`);
+            let tr = $("<tr></tr>");
+            let botonEliminar = $("<button></button>");
+            botonEliminar.html("Eliminar Cancha");
+            botonEliminar.addClass("btn btn-danger btn-block");
+            botonEliminar.click(()=>{
+                eliminarCanchaById(fila.key);
+            });
+            let tdBoton = $("<td></td>");
+            tdBoton.append(botonEliminar);
+            tr.append(`<td>${fila.key}</td>`);
+            tr.append(`<td>${fila.val().nombre}</td>`);
+            tr.append(`<td>${fila.val().direccion}</td>`);
+            tr.append(`<td><button onClick="eliminarCanchaById('${fila.key}')">Eliminar</button></td>`);
+            tr.append(tdBoton);
+            tabla.append(tr);
         });
+        
+        contenedor.append(tabla);
     };
     let crearCancha = ()=>{
         let nombre = "Nueva Cancha";
@@ -57,10 +81,29 @@ window.onload = ()=>{
             }
         });
     };
+    let eliminarCanchaById = (id)=>{
+        let referencia = firebase.database().ref(`canchitas/${id}`);
+        referencia.remove().then(()=>{
+            console.log("Eliminado Correctamente");
+        }).catch((error)=>{
+            console.log(error);
+        });
+    }
     // Iniciando Configuración
     iniciarFirebase();
     //asignando el evento click al boton getCanchas
     btnGetCanchas.click(getCanchitas);
     //asignando el evento click al boton crearCanchita
     btnCrearCanchita.click(crearCancha);
+    // asignando el evento click al boton eliminarCancha
+    // btnEliminarCancha.click(eliminarCanchaById);
 };
+
+var eliminarCanchaById = (id)=>{
+    let referencia = firebase.database().ref(`canchitas/${id}`);
+    referencia.remove().then(()=>{
+        console.log("Eliminado Correctamente");
+    }).catch((error)=>{
+        console.log(error);
+    });
+}
