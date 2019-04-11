@@ -4,6 +4,21 @@ window.onload = ()=>{
     let btnCrearCanchita = $("#btnCrearCanchita");
     let btnEliminarCancha = $('#btnEliminarCancha');
     let contenedor = $('#contenedor');
+    let btnGuardarCambios = $("#btnGuardarCambios");
+
+    let guardarCambios = ()=>{
+        let key = $("#inputKey").val();
+        let referencia = firebase.database().ref(`canchitas/${key}`);
+        referencia.update({
+            nombre: $("#inputNombre").val(),
+            direccion: $("#inputDireccion").val(),
+        }).then(()=>{
+            $("#modalEditarCancha").modal("hide");
+        }).catch(()=>{
+            alert("Error al modificar los gatos");
+        });
+
+    }
 
     let iniciarFirebase = ()=>{
         var config = {
@@ -44,18 +59,39 @@ window.onload = ()=>{
         data.forEach( fila => {
             let tr = $("<tr></tr>");
             let botonEliminar = $("<button></button>");
+            let botonEditar = $("<button></button>");
+            
+            botonEditar.click(()=>{
+                // Abriendo el modal de editar cancha
+                $("#inputKey").val(fila.key);
+                $("#inputNombre").val(fila.val().nombre);
+                $("#inputDireccion").val(fila.val().direccion);
+                $("#modalEditarCancha").modal('show');
+            });
+            botonEditar.html("Editar Canchita");
+            botonEditar.addClass("btn btn-warning btn-block");
+
+
             botonEliminar.html("Eliminar Cancha");
             botonEliminar.addClass("btn btn-danger btn-block");
             botonEliminar.click(()=>{
                 eliminarCanchaById(fila.key);
             });
+            
+            let tdBotonEditar = $("<td></td>");
+            tdBotonEditar.append(botonEditar);
+
             let tdBoton = $("<td></td>");
             tdBoton.append(botonEliminar);
+
+
             tr.append(`<td>${fila.key}</td>`);
             tr.append(`<td>${fila.val().nombre}</td>`);
             tr.append(`<td>${fila.val().direccion}</td>`);
             tr.append(`<td><button onClick="eliminarCanchaById('${fila.key}')">Eliminar</button></td>`);
             tr.append(tdBoton);
+            tr.append(tdBotonEditar);
+            
             tabla.append(tr);
         });
         
@@ -97,6 +133,7 @@ window.onload = ()=>{
     btnCrearCanchita.click(crearCancha);
     // asignando el evento click al boton eliminarCancha
     // btnEliminarCancha.click(eliminarCanchaById);
+    btnGuardarCambios.click(guardarCambios);
 };
 
 var eliminarCanchaById = (id)=>{
