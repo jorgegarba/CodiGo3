@@ -156,11 +156,18 @@ window.onload = ()=>{
         referenciaStorage.child(`carpeta/${nombreFinal}`)
                         .put(archivo,metadata)
                         .then((response)=>{
-                            console.log(response);
+                            // obtener la URL de descarga de la imagen
+                            // devuelve una promesa
+                            return response.ref.getDownloadURL();
+                        }).then((url)=>{
+                            console.log(url);
+                            let referenciaDatabase = firebase.database().ref("canchitas/4");
+                            return referenciaDatabase.update({imagen:url});
+                        }).then(()=>{
+                            console.log("Archivo subido y cancha actualizada");
                         }).catch((error)=>{
                             console.log(error);
-                        });
-        
+                        });        
     }
     // Iniciando Configuración
     iniciarFirebase();
