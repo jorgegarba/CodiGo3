@@ -6,6 +6,8 @@ window.onload = ()=>{
     let contenedor = $('#contenedor');
     let btnGuardarCambios = $("#btnGuardarCambios");
     let btnBuscar = $("#btnBuscar");
+    let btnSubirArchivo = $("#btnSubirArchivo");
+    let inputSubirArchivo = document.getElementById("inputSubirArchivo");
 
     let guardarCambios = ()=>{
         let key = $("#inputKey").val();
@@ -129,12 +131,37 @@ window.onload = ()=>{
         evento.preventDefault();
         console.log("En buscar");
         let referencia = firebase.database().ref("canchitas");
-        referencia.equalTo(2).on('value',data=>{
-            // data.forEach(fila=>{
-                console.log(data);
-            // });
+        // equalTo => El valor tiene que coincidir exactamente.
+        // startAt => similar a un like => [busqueda]%
+        // endAt => similar a un like => %[busqueda]
+        referencia.orderByChild('nombre').equalTo($("#inputBuscar").val()).on('value',data=>{
+            data.forEach(fila=>{
+                console.log(fila.key);
+                console.log(fila.val().nombre);
+                console.log(fila.val().direccion);
+            });
         });
     };
+    let subirArchivo = ()=>{
+        let archivo = inputSubirArchivo.files[0];
+        let nombre = archivo.name;
+        let nombreFinal = +(new Date()) + "-" +nombre
+        // Referencia al Storage de Firebase
+        let referenciaStorage = firebase.storage().ref();
+
+        let metadata = {
+            contentType: archivo.type
+        };
+
+        referenciaStorage.child(`carpeta/${nombreFinal}`)
+                        .put(archivo,metadata)
+                        .then((response)=>{
+                            console.log(response);
+                        }).catch((error)=>{
+                            console.log(error);
+                        });
+        
+    }
     // Iniciando Configuración
     iniciarFirebase();
     //asignando el evento click al boton getCanchas
@@ -146,6 +173,8 @@ window.onload = ()=>{
     btnGuardarCambios.click(guardarCambios);
     //asignando el evento click al boton de busqueda
     btnBuscar.click(buscarCancha);
+    // asignando el evento click al boton de subida de archivo
+    btnSubirArchivo.click(subirArchivo);
 };
 
 var eliminarCanchaById = (id)=>{
