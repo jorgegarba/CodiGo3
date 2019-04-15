@@ -1,0 +1,11 @@
+<h2>Lista de Heroes</h2>
+
+<ul class="heroes">
+    <li *ngFor = "let objHeroe of arrHeroes"
+        (click)="onSelect(objHeroe)">
+       <span class="badge">
+           {{objHeroe.id}}
+       </span>
+       {{objHeroe.name}}
+    </li>
+</ul>
