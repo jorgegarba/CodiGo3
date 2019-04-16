@@ -1,11 +1,30 @@
-<h2>Lista de Heroes</h2>
+<div *ngIf="selectedHero != null">
+    <h2>{{selectedHero.name}} Details</h2>
+    <div>
+        <span>Id:</span> {{selectedHero.id}}
+    </div>
+    <div>
+        <label>
+            Nombre
+            <input [(ngModel)]="selectedHero.name" placeholder="Nombre..."/>
+        </label>
+    </div>
+</div>
+
+<div *ngIf="selectedHero == null">
+    Ningún Héroe ha sido seleccionado
+</div>
 
 <ul class="heroes">
     <li *ngFor = "let objHeroe of arrHeroes"
-        (click)="onSelect(objHeroe)">
+        (click)="onSelect(objHeroe)"
+        [class.selected]="objHeroe === selectedHero">
+
        <span class="badge">
            {{objHeroe.id}}
        </span>
        {{objHeroe.name}}
     </li>
 </ul>
+
+<app-hero-detail [objHeroe]="selectedHero"></app-hero-detail>
