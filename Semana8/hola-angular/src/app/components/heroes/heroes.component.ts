@@ -10,9 +10,11 @@ import { HeroService } from './../../services/hero.service';
 export class HeroesComponent{
     public arrHeroes:Array<Hero>;
     public selectedHero:Hero;
-    
+
     constructor(private _sHero:HeroService) {
-        this.arrHeroes = this._sHero.getHeroes();
+        this._sHero.getHeroes().then((respuesta)=>{
+            this.arrHeroes = respuesta;
+        });
     }
     
     public onSelect(selectedHero):void{

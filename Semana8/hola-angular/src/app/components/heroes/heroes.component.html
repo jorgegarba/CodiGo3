@@ -15,7 +15,7 @@
     Ningún Héroe ha sido seleccionado
 </div>
 
-<ul class="heroes">
+<ul class="heroes" *ngIf="arrHeroes != null">
     <li *ngFor = "let objHeroe of arrHeroes"
         (click)="onSelect(objHeroe)"
         [class.selected]="objHeroe === selectedHero">
@@ -26,5 +26,7 @@
        {{objHeroe.name}}
     </li>
 </ul>
+<img *ngIf="arrHeroes == null" src="https://media1.tenor.com/images/779781883952778b25974baa3cf7679c/tenor.gif?itemid=7991979"/>
+
 
 <app-hero-detail [objHeroe]="selectedHero"></app-hero-detail>
