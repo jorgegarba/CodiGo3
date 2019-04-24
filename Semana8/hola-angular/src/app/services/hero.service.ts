@@ -18,9 +18,14 @@ export class HeroService {
     });
   }
 
-  getHeroById(id:number):Hero{
-    let heroeTmp = HEROES.filter( hero => hero.id === id );
-    return heroeTmp[0];
+  getHeroById(id:number):Promise<any>{
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        this._sLog.addLog(`Se ha solicitado el heroe de id ${id} ${new Date()}`);
+        let heroeTmp = HEROES.filter( hero => hero.id === id );
+        resolve(heroeTmp[0]);
+      }, 1500);
+    });
   }
 
 }

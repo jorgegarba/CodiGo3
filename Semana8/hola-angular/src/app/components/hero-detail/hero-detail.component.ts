@@ -27,7 +27,9 @@ export class HeroDetailComponent {
    * y consume el servicio para traer al heroe dado su id
    */
   getIdAndSetHero(){
-    let idUrl = this._route.snapshot.paramMap.get('id');
-    console.log("ID DE LA URL " + idUrl);
+    let idUrl = +this._route.snapshot.paramMap.get('id');
+    this._sHero.getHeroById(idUrl).then( (respuesta) => {
+      this.objHeroe = respuesta;
+    });
   }
 }
