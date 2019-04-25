@@ -15,6 +15,8 @@ import { FormsComponent } from './components/forms/forms.component';
 // libreria Toastr (alertas)
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PipesComponent } from './components/pipes/pipes.component';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HomeComponent,
     ErrorComponent,
     HttpComponent,
-    FormsComponent
+    FormsComponent,
+    PipesComponent,
+    CapitalizePipe
   ],
   imports: [
     BrowserModule,

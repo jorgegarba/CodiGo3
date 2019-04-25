@@ -1,0 +1,98 @@
+<div class="container mt-5">
+  <table class="table table-dark">
+    <thead>
+      <tr>
+        <th>Variable</th>
+        <th>Pipe</th>
+        <th>Resultado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{nombre}}</td>
+        <td><code>uppercase</code></td>
+        <td>{{nombre | uppercase}}</td>
+      </tr>
+      <tr>
+        <td>{{nombre}}</td>
+        <td><code>lowercase</code></td>
+        <td>{{nombre | lowercase}}</td>
+      </tr>
+      <tr>
+        <td>{{nombre}}</td>
+        <td><code>slice</code></td>
+        <td>{{nombre | slice:3}}</td>
+      </tr>
+      <tr>
+        <td>{{nombre}}</td>
+        <td><code>slice</code></td>
+        <td>{{nombre | slice:0:5}}</td>
+      </tr>
+      <tr>
+        <td>{{miArreglo}}</td>
+        <td><code>slice</code></td>
+        <td>{{miArreglo | slice:0:5}}</td>
+      </tr>
+      <tr>
+        <td>{{pi}}</td>
+        <td><code>number:'3'</code></td>
+        <td>{{pi | number:'3.0-0'}}</td>
+      </tr>
+      <tr>
+        <td>{{pi}}</td>
+        <td><code>number:'1.2-4'</code></td>
+        <td>{{pi | number:'1.2-4'}}</td>
+      </tr>
+      <tr>
+        <td>{{igv}}</td>
+        <td><code>percent</code></td>
+        <td>{{igv | percent}}</td>
+      </tr>
+      <tr>
+        <td>{{igv}}</td>
+        <td><code>percent:'2.2-2'</code></td>
+        <td>{{igv | percent:'2.2-2'}}</td>
+      </tr>
+      <tr>
+        <td>{{sueldo}}</td>
+        <td><code>currency:'EUR'</code></td>
+        <td>{{sueldo | currency:'EUR'}}</td>
+      </tr>
+      <tr>
+        <td>{{sueldo}}</td>
+        <td><code>currency:'PEN'</code></td>
+        <td>{{sueldo | currency:'PEN'}}</td>
+      </tr>
+      <tr>
+        <td>{{sueldo}}</td>
+        <td><code>currency:'PEN'</code></td>
+        <td>{{sueldo | currency:'PEN':'S/. ':'4.2-2'}}</td>
+      </tr>
+      <tr>
+        <td>{{sueldo}}</td>
+        <td><code>currency:'PEN'</code></td>
+        <td>{{sueldo | currency:'PEN':'S/. ':'4.2-2'}}</td>
+      </tr>
+      <tr>
+        <td>{{variableAsync}}</td>
+        <td><code>async </code></td>
+        <td>{{variableAsync | async}}</td>
+      </tr>
+      <tr>
+        <td>{{hoy}}</td>
+        <td><code>date:'medium'</code></td>
+        <td>{{hoy | date:'medium'}}</td>
+      </tr>
+      <tr>
+        <td>{{hoy}}</td>
+        <td><code>date:'dd - MM - yyyy' </code></td>
+        <td>{{hoy | date:'dd - MM - yyyy'}}</td>
+      </tr>
+      <tr>
+        <td>{{nombre}}</td>
+        <td><code>capitalize</code></td>
+        <td>{{nombre | capitalize}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

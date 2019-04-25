@@ -4,6 +4,7 @@ import { HomeComponent } from './components/home/home.component';
 import {ErrorComponent} from './components/error/error.component';
 import { HttpComponent } from './components/http/http.component';
 import { FormsComponent } from './components/forms/forms.component';
+import { PipesComponent } from './components/pipes/pipes.component';
 
 const routes:Routes = [
     {
@@ -21,6 +22,10 @@ const routes:Routes = [
     {
         path: 'forms',
         component: FormsComponent
+    },
+    {
+        path: 'pipes',
+        component: PipesComponent
     },
     {
         path: '**',
