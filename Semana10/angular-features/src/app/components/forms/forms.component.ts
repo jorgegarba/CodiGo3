@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from './../../services/http.service';
 
+import { ToastrService } from 'ngx-toastr';
+
 @Component({
   selector: 'app-forms',
   templateUrl: './forms.component.html',
@@ -12,8 +14,10 @@ export class FormsComponent implements OnInit {
     imagen:'',
     nombre:''
   }
+  creado:Boolean;
 
-  constructor(private _sHttp:HttpService) { }
+  constructor(private _sHttp:HttpService,
+              private _sToastr: ToastrService) { }
 
   ngOnInit() {
 
@@ -22,10 +26,10 @@ export class FormsComponent implements OnInit {
   crearRestaurant(formulario){
     this._sHttp.createRestaurant(this.objRestaurant)
                 .subscribe((data)=>{
-                  console.log(data);
-                },(error)=>{
-                  console.log(error);
-                })
+                              this._sToastr.success('Creado!', 'Restaurant creado exitosamente!!');
+                            },(error)=>{
+                              this.creado = false;
+                            });
 
     formulario.reset();
   }

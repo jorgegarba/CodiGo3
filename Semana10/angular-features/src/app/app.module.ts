@@ -12,6 +12,10 @@ import { ErrorComponent } from './components/error/error.component';
 import { HttpComponent } from './components/http/http.component';
 import { FormsComponent } from './components/forms/forms.component';
 
+// libreria Toastr (alertas)
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +29,13 @@ import { FormsComponent } from './components/forms/forms.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 15000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+    }) // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]
