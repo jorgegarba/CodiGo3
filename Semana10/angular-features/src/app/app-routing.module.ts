@@ -5,6 +5,8 @@ import {ErrorComponent} from './components/error/error.component';
 import { HttpComponent } from './components/http/http.component';
 import { FormsComponent } from './components/forms/forms.component';
 import { PipesComponent } from './components/pipes/pipes.component';
+import { FirebaseComponent } from './components/firebase/firebase.component';
+import { DatatablesComponent } from './components/datatables/datatables.component';
 
 const routes:Routes = [
     {
@@ -26,6 +28,14 @@ const routes:Routes = [
     {
         path: 'pipes',
         component: PipesComponent
+    },
+    {
+        path: 'firebase',
+        component: FirebaseComponent
+    },
+    {
+        path: 'datatables',
+        component: DatatablesComponent
     },
     {
         path: '**',

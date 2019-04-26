@@ -18,6 +18,23 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PipesComponent } from './components/pipes/pipes.component';
 import { CapitalizePipe } from './pipes/capitalize.pipe';
 
+// Librería AngularFire
+import { AngularFireModule } from '@angular/fire';
+import { AngularFirestoreModule} from '@angular/fire/firestore';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
+
+// Environments
+import { environment } from './../environments/environment';
+import { FirebaseComponent } from './components/firebase/firebase.component';
+
+
+import { DataTablesModule } from 'angular-datatables';
+
+
+
+import { DatatablesComponent } from './components/datatables/datatables.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -27,7 +44,9 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
     HttpComponent,
     FormsComponent,
     PipesComponent,
-    CapitalizePipe
+    CapitalizePipe,
+    FirebaseComponent,
+    DatatablesComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +58,11 @@ import { CapitalizePipe } from './pipes/capitalize.pipe';
       timeOut: 15000,
       positionClass: 'toast-bottom-right',
       preventDuplicates: true,
-    }) // ToastrModule added
+    }), // ToastrModule added,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    DataTablesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
