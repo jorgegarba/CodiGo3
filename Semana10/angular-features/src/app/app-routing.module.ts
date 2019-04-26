@@ -7,6 +7,9 @@ import { FormsComponent } from './components/forms/forms.component';
 import { PipesComponent } from './components/pipes/pipes.component';
 import { FirebaseComponent } from './components/firebase/firebase.component';
 import { DatatablesComponent } from './components/datatables/datatables.component';
+import { CustomDatatablesComponent } from './components/custom-datatables/custom-datatables.component';
+import { ProtegidoComponent } from './components/protegido/protegido.component';
+import { ProtegidoService} from './services/protegido.service';
 
 const routes:Routes = [
     {
@@ -36,6 +39,15 @@ const routes:Routes = [
     {
         path: 'datatables',
         component: DatatablesComponent
+    },
+    {
+        path: 'customdatatables',
+        component: CustomDatatablesComponent
+    },
+    {
+        path: 'protegido',
+        component: ProtegidoComponent,
+        canActivate: [ProtegidoService]
     },
     {
         path: '**',

@@ -33,6 +33,8 @@ import { DataTablesModule } from 'angular-datatables';
 
 
 import { DatatablesComponent } from './components/datatables/datatables.component';
+import { CustomDatatablesComponent } from './components/custom-datatables/custom-datatables.component';
+import { ProtegidoComponent } from './components/protegido/protegido.component';
 
 
 @NgModule({
@@ -46,7 +48,9 @@ import { DatatablesComponent } from './components/datatables/datatables.componen
     PipesComponent,
     CapitalizePipe,
     FirebaseComponent,
-    DatatablesComponent
+    DatatablesComponent,
+    CustomDatatablesComponent,
+    ProtegidoComponent,
   ],
   imports: [
     BrowserModule,
