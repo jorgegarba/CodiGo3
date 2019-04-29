@@ -10,11 +10,16 @@ import {MaterialModule} from './material.module';
 // Angular Google Maps
 import { AgmCoreModule } from '@agm/core';
 import { MapaComponent } from './components/mapa/mapa.component';
+import { MapaEditarComponent } from './dialogs/mapa-editar/mapa-editar.component';
 
 @NgModule({
+  entryComponents:[
+    MapaEditarComponent
+  ],
   declarations: [
     AppComponent,
-    MapaComponent
+    MapaComponent,
+    MapaEditarComponent
   ],
   imports: [
     BrowserModule,
