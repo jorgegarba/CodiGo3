@@ -9,17 +9,23 @@ import { Marcador } from './../../models/Marcador';
 })
 export class MapaEditarComponent implements OnInit {
   // miReferencia => es la variable que representa al Dialog
+  objMarcador:Marcador;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data:Marcador,
-              public miReferencia: MatDialogRef<MapaEditarComponent>) {
-    console.log(data);
+  constructor(@Inject(MAT_DIALOG_DATA) public data:any,
+              public miReferencia: MatDialogRef<MapaEditarComponent>) {                
+      this.objMarcador = data.marcador;
   }
 
   ngOnInit() {
   }
 
-  guardarCambios(){
-    this.miReferencia.close("Los nuevos cambios");
+  guardarCambios(titulo, descripcion){
+    let objRespuesta = {
+      titulo,
+      descripcion
+    };
+    
+    this.miReferencia.close(objRespuesta);
   }
 
   cancelar(){

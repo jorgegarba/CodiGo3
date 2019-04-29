@@ -1,14 +1,21 @@
-<form class="example-form">
+<form class="example-form" #miForm="ngForm">
   <mat-form-field class="example-full-width">
-    <input matInput placeholder="Escriba el Titulo...">
+    <input matInput placeholder="Escriba el Titulo..."
+            [value]="objMarcador.titulo"
+            name="titulo"
+            #titulo>
   </mat-form-field>
   <br>
   <mat-form-field class="example-full-width">
-    <textarea matInput placeholder="Escriba la Descripción..." rows="5"></textarea>
+    <textarea matInput placeholder="Escriba la Descripción..."
+               rows="5"
+               [value]="objMarcador.descripcion"
+               name="descripcion"
+               #descripcion></textarea>
   </mat-form-field>
 
   <button mat-raised-button color="primary"
-          (click)="guardarCambios()"
+          (click)="guardarCambios(titulo.value, descripcion.value)"
           type="button">Guardar Cambios</button>
   <button mat-raised-button color="warn"
           type="button"
