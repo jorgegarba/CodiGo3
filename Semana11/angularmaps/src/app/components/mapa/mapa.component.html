@@ -1,0 +1,13 @@
+<agm-map [latitude]="lat"
+          [longitude]="lng"
+          [zoom]="15"
+          (mapClick)="agregarMarcador($event)">
+  <agm-marker *ngFor="let marcador of marcadores"
+              [latitude]="marcador.lat"
+              [longitude]="marcador.lng">
+    <agm-info-window>
+      <strong>{{marcador.titulo}}</strong>
+      <p>{{marcador.descripcion}}</p>
+    </agm-info-window>
+  </agm-marker>
+</agm-map>
