@@ -1,7 +1,19 @@
-import {miJson} from './variables/variables';
+// importando las rutas
+import {servicio_router} from './api/routes/servicio';
 
-console.log("adios)");
-console.log("FIN DEL PROGRAMA");
+var express = require('express');
+var bodyParser = require('body-parser');
 
-console.log(`Valor de A => ${miJson.a}`);
-console.log(`Valor de B => ${miJson.b}`);
+var app = express();
+
+// configuración de bodyParser
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+const PUERTO = process.env.PORT || 3000;
+
+app.use('',servicio_router);
+
+app.listen(PUERTO,function(){
+    console.log("Servidor corriendo correctamente en el puerto 3000");
+});
