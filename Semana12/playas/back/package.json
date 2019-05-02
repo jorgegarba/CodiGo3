@@ -1,0 +1,17 @@
+{
+  "name": "playas",
+  "version": "1.0.0",
+  "description": "Sistema Web para ubicar y alquilar playas de estacionamiento de acuerdo a nuestro ubicacion y disponinbilidad de las mismas.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./dist/index.js"
+  },
+  "keywords": [
+    "playas",
+    "estacionamiento",
+    "startup"
+  ],
+  "author": "Jorge Luis Garnica Blanco",
+  "license": "MIT"
+}
