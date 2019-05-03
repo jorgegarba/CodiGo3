@@ -7,3 +7,5 @@ exports.servicio_router = express_1.Router();
 exports.servicio_router.get('/servicio', servicio_1.servicio_controller.getAll);
 exports.servicio_router.post('/servicio/crear', servicio_1.servicio_controller.create);
 exports.servicio_router.get('/servicio/:serv_id', servicio_1.servicio_controller.getById);
+exports.servicio_router.get('/servicio/eliminar/:serv_id', servicio_1.servicio_controller.deleteById);
+exports.servicio_router.post('/servicio/actualizar/:serv_id', servicio_1.servicio_controller.update);

@@ -49,5 +49,49 @@ exports.servicio_controller = {
                 res.status(200).json(response);
             }
         });
+    },
+    deleteById: (req, res) => {
+        sequelize_1.Servicio.destroy({
+            where: {
+                serv_id: req.params.serv_id
+            }
+        }).then((cantidad) => {
+            if (cantidad > 0) {
+                let response = {
+                    message: "eliminado",
+                    content: cantidad,
+                };
+                res.status(200).json(response);
+            }
+            else {
+                let response = {
+                    message: "No se ha eliminado ningun registro",
+                    content: cantidad,
+                };
+                res.status(200).json(response);
+            }
+        });
+    },
+    update: (req, res) => {
+        sequelize_1.Servicio.update(req.body, {
+            where: {
+                serv_id: req.params.serv_id
+            }
+        }).then((cantidad) => {
+            if (cantidad > 0) {
+                let response = {
+                    message: 'Se modificaron los archivos',
+                    content: cantidad
+                };
+                res.status(200).json(response);
+            }
+            else {
+                let response = {
+                    message: 'No se modificaron los archivos',
+                    content: cantidad
+                };
+                res.status(200).json(response);
+            }
+        });
     }
 };
