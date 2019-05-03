@@ -13,8 +13,13 @@ exports.servicio_model = (sequelize, type) => {
             allowNull: true,
         },
         serv_desc: {
-            type: type.TEXT
+            type: type.TEXT,
+            allowNull: true,
         }
+    }, {
+        timestamps: false,
+        tableName: 't_servicio'
     });
+    // Aquí se declaran las funciones de Modelo(o de clase)
     return servicio_model;
 };

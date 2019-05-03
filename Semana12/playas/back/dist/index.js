@@ -10,10 +10,18 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 const PUERTO = process.env.PORT || 3000;
-app.use('', servicio_1.servicio_router);
+// usando las rutas importadas
+app.use('/api', servicio_1.servicio_router);
 app.listen(PUERTO, function () {
     console.log("Servidor corriendo correctamente en el puerto 3000");
-    sequelize_1.sequelize.sync({ force: true }).then(() => {
+    // force => true cada vez que el proyecto inicie,
+    // se van a eliminar todas las tablas, contenido y relaciones 
+    // que tengan, para crearse nuevamente.
+    // force => false cada vez que el proyecto inicie,
+    // no elmina ninguna tabla de la base de datos, sin embargo,
+    // si tenemos una tabla recientemente creada.
+    // la función sync, la crea en la base de datos.
+    sequelize_1.sequelize.sync({ force: false }).then(() => {
         console.log("Base de datos creada con éxito");
     }).catch((error) => {
         console.log(error);
