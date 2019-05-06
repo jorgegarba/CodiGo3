@@ -1,5 +1,8 @@
 // importando las rutas
 import { servicio_router } from './api/routes/servicio';
+import { playa_router } from './api/routes/playa';
+import { registro_router } from './api/routes/registro';
+
 import { sequelize } from './api/config/sequelize';
 
 
@@ -18,7 +21,8 @@ const PUERTO = process.env.PORT || 3000;
 
 // usando las rutas importadas
 app.use('/api', servicio_router);
-
+app.use('/api', playa_router);
+app.use('/api', registro_router);
 
 
 app.listen(PUERTO, function () {

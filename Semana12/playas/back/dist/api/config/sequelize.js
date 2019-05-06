@@ -10,7 +10,8 @@ const Sequelize = require('sequelize');
 exports.sequelize = new Sequelize('playas', 'root', '', {
     host: 'localhost',
     dialect: 'mysql',
-    timezone: '-05:00'
+    timezone: '-05:00',
+    logging: console.log
 });
 exports.Servicio = servicio_1.servicio_model(exports.sequelize, Sequelize);
 exports.Playa = playa_1.playa_model(exports.sequelize, Sequelize);
@@ -23,6 +24,8 @@ exports.Usuario = usuario_1.usuario_model(exports.sequelize, Sequelize);
 exports.PlayaServicio.belongsTo(exports.Playa, { foreignKey: 'playa_id' });
 exports.PlayaServicio.belongsTo(exports.Servicio, { foreignKey: 'serv_id' });
 exports.SlotPlaya.belongsTo(exports.Playa, { foreignKey: 'playa_id' });
+exports.Playa.hasMany(exports.SlotPlaya, { foreignKey: 'playa_id' });
 exports.Registro.belongsTo(exports.SlotPlaya, { foreignKey: 'slotp_id' });
+exports.SlotPlaya.hasMany(exports.Registro, { foreignKey: 'slotp_id' });
 exports.Registro.belongsTo(exports.Usuario, { foreignKey: 'usu_id' });
 // ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password'
