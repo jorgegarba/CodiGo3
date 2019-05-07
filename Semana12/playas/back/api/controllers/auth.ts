@@ -14,6 +14,7 @@ export var auth_controller = {
             }
         }).then((usuarios: any) => {
             if (usuarios.length === 0) {
+                // -- AQUI -- //
                 // Instanciando un objeto del modelo Usuario
                 let objUsuario = Usuario.build(req.body);
                 objUsuario.setSaltAndHash(req.body.usu_pass);
@@ -33,7 +34,8 @@ export var auth_controller = {
                         res.status(500).json(response);
                     }
                 });
-            }else{
+                // </aqui>
+            } else {
                 let response = {
                     message: 'error',
                     content: `El usuario con email ${req.body.usu_email} ya existe`,
@@ -45,6 +47,40 @@ export var auth_controller = {
 
     },
     login: (req: Request, res: Response) => {
-
-    }
+        let {usu_email,usu_pass} = req.body;
+        // findOne => 
+        Usuario.findOne({
+            where:{
+                usu_email:usu_email
+            }
+        }).then((objUsuario:any)=>{
+            if(objUsuario){
+                // el usuario existe => validar la contra
+                let valid = objUsuario.validPassword(usu_pass);
+                if(valid){
+                    // contrasenia correcta
+                    let token = objUsuario.generateJWT();
+                    let response = {
+                        message:'ok',
+                        token:token
+                    };
+                    res.status(200).json(response);
+                }else{
+                    // contrasenia incorrecta
+                    let response = {
+                        message: 'error',
+                        content: 'Usuario o password incorrecto'
+                    };
+                    res.status(500).json(response);
+                }
+            }else{
+                // si es null
+                let response = {
+                    message: 'error',
+                    content: 'Usuario o password incorrecto'
+                };
+                res.status(500).json(response);
+            }
+        })
+    }   
 }
