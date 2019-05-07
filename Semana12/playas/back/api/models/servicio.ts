@@ -26,6 +26,11 @@ export var servicio_model = (sequelize:Sequelize,type:any)=>{
 
     // Aquí se declaran las funciones de Modelo(o de clase)
 
+    servicio_model.prototype.mostrarIdYNombre = function(){
+        console.log(`ID => ${this.serv_id}`);
+        console.log(`NOMBRE => ${this.serv_nom}`);
+    }
+
     return servicio_model;
 
 }

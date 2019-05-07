@@ -2,6 +2,7 @@
 import { servicio_router } from './api/routes/servicio';
 import { playa_router } from './api/routes/playa';
 import { registro_router } from './api/routes/registro';
+import { auth_router } from './api/routes/auth';
 
 import { sequelize } from './api/config/sequelize';
 
@@ -23,6 +24,7 @@ const PUERTO = process.env.PORT || 3000;
 app.use('/api', servicio_router);
 app.use('/api', playa_router);
 app.use('/api', registro_router);
+app.use('/api', auth_router);
 
 
 app.listen(PUERTO, function () {
@@ -35,6 +37,8 @@ app.listen(PUERTO, function () {
     // no elmina ninguna tabla de la base de datos, sin embargo,
     // si tenemos una tabla recientemente creada.
     // la función sync, la crea en la base de datos.
+
+    
     sequelize.sync({ force: false }).then(() => {
         console.log("Base de datos creada con éxito");
     }).catch((error:any) => {
