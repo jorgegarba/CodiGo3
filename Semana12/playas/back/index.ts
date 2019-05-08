@@ -17,19 +17,18 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 const PUERTO = process.env.PORT || 3000;
-
 // CONFIGURANDO EL CORS
 app.use((req:Request,res:Response,next:NextFunction)=>{
     res.header('Access-Control-Allow-Origin','http://localhost:4200');
-    res.header('Access-Control-Allow-Headers','Content-type, Authorization');
+    res.header('Access-Control-Allow-Headers','Content-Type, Authorization');
     res.header('Access-Control-Allow-Methods','GET, POST');
     res.header('Allow','GET, POST');
     next();
 });
 
 // usando las rutas importadas
-app.use('/api',servicio_router);
-app.use('/api',playa_router);
+app.use('/api', servicio_router);
+app.use('/api', playa_router);
 app.use('/api', registro_router);
 app.use('/api', auth_router);
 

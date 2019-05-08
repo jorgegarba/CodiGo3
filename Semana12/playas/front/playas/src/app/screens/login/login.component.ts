@@ -9,19 +9,20 @@ import { AuthService } from 'src/app/services/auth.service';
 export class LoginComponent implements OnInit {
 
   objUsuario = {
-    usu_email:'',
-    usu_pass:''
+    usu_email: '',
+    usu_pass: ''
   }
 
-  constructor(private _sAuth:AuthService) { }
+  constructor(private _sAuth: AuthService) { }
 
   ngOnInit() {
   }
 
-  login(){
-    this._sAuth.login(this.objUsuario).subscribe((respuesta)=>{
-      console.log(respuesta);
-    })
+  login() {
+    this._sAuth.login(this.objUsuario).subscribe((respuesta) => {
+      if (respuesta.message == "ok" && respuesta.token) {
+        this._sAuth.saveToken(respuesta.token);
+      }
+    });
   }
-
 }
