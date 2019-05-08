@@ -9,6 +9,7 @@ export var playa_controller = {
      */
     getAllSlotsByPlayaId:(req:Request,res:Response)=>{
         const {playa_id} = req.params;
+
         Playa.findAll({
             where:{
                 playa_id:playa_id

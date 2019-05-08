@@ -1,6 +1,7 @@
 import {servicio_model} from './../models/servicio';
 import {playa_model} from './../models/playa';
 import {playaservicio_model} from './../models/playaservicio';
+
 import {slotplaya_model} from './../models/slotplaya';
 import {registro_model} from './../models/registro';
 import {usuario_model} from './../models/usuario';
@@ -25,11 +26,15 @@ export const Usuario = usuario_model(sequelize,Sequelize);
 //En el modelo PlayaServicio va a crear un campo de nombre 'playa_id'
 //este campo será la clave foranea que una PlayaServicio con Playa
 PlayaServicio.belongsTo(Playa, {foreignKey:'playa_id'});
-
 PlayaServicio.belongsTo(Servicio, {foreignKey:'serv_id'});
+
 
 SlotPlaya.belongsTo(Playa,{foreignKey:'playa_id'});
 Playa.hasMany(SlotPlaya,{foreignKey:'playa_id'});
+
+
+
+
 
 Registro.belongsTo(SlotPlaya,{foreignKey:'slotp_id'});
 SlotPlaya.hasMany(Registro,{foreignKey:'slotp_id'});

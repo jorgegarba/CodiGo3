@@ -5,7 +5,7 @@ import { registro_router } from './api/routes/registro';
 import { auth_router } from './api/routes/auth';
 
 import { sequelize } from './api/config/sequelize';
-
+import { NextFunction, Request, Response } from 'express';
 
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -16,13 +16,20 @@ var app = express();
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-
-
 const PUERTO = process.env.PORT || 3000;
 
+// CONFIGURANDO EL CORS
+app.use((req:Request,res:Response,next:NextFunction)=>{
+    res.header('Access-Control-Allow-Origin','http://localhost:4200');
+    res.header('Access-Control-Allow-Headers','Content-type, Authorization');
+    res.header('Access-Control-Allow-Methods','GET, POST');
+    res.header('Allow','GET, POST');
+    next();
+});
+
 // usando las rutas importadas
-app.use('/api', servicio_router);
-app.use('/api', playa_router);
+app.use('/api',servicio_router);
+app.use('/api',playa_router);
 app.use('/api', registro_router);
 app.use('/api', auth_router);
 
