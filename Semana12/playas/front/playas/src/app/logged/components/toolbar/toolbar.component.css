@@ -1,0 +1,19 @@
+.btn-hamburguesa{
+    display: none;
+    min-width: 56px;
+}
+
+@media (max-width: 720px){
+    .btn-hamburguesa{
+        display: flex;
+        justify-content: center;
+    }
+
+    mat-icon{
+        font-size: 30px;
+        height: 56px;
+        width: 56px;
+        line-height: 56px;
+        color: white;
+    }
+}
