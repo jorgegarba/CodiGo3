@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const sequelize_1 = require("./../config/sequelize");
 const sequelize_2 = require("./../config/sequelize");
+let sequelize = require('sequelize');
 exports.playa_controller = {
     /**
      * Función para obtener todos los espacios o slots
@@ -20,6 +21,21 @@ exports.playa_controller = {
             let response = {
                 message: 'ok',
                 content: respuesta,
+            };
+            res.status(200).json(response);
+        });
+    },
+    getAllPlayas: (req, res) => {
+        sequelize_1.Playa.findAll({
+            include: [
+                {
+                    model: sequelize_2.SlotPlaya,
+                }
+            ],
+        }).then((respuesta) => {
+            let response = {
+                message: "ok",
+                content: respuesta
             };
             res.status(200).json(response);
         });

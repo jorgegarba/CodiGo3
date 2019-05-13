@@ -5,9 +5,10 @@ import { ToolbarComponent } from './components/toolbar/toolbar.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { MainContentComponent } from './components/main-content/main-content.component';
 import { MaterialModule } from '../material.module';
+import { PlayasComponent } from './components/playas/playas.component';
 
 @NgModule({
-  declarations: [ToolbarComponent, SidenavComponent, MainContentComponent],
+  declarations: [ToolbarComponent, SidenavComponent, MainContentComponent, PlayasComponent],
   imports: [
     CommonModule,
     LoggedRoutingModule,

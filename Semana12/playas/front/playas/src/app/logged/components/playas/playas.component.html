@@ -1,0 +1,6 @@
+<div *ngIf="!_sPlaya.playasRetorno">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="_sPlaya.playasRetorno">
+  <pre>{{_sPlaya.playasRetorno | json}}</pre>
+</div>

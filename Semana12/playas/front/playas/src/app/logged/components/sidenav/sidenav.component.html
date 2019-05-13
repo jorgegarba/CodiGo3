@@ -1,16 +1,20 @@
 <mat-sidenav-container class="app-sidenav-container">
-  <mat-sidenav #sidenav class="app-sidenav mat-elevation-z10"
-              [opened]="!pantallaSmall()"
-              [mode]="pantallaSmall() ? 'over' : 'side'">
+  <mat-sidenav #sidenav class="app-sidenav mat-elevation-z10" [opened]="!pantallaSmall()"
+    [mode]="pantallaSmall() ? 'over' : 'side'">
 
     <mat-toolbar color="primary">
       MENU
     </mat-toolbar>
-    <mat-list>
-      <mat-list-item> Playas </mat-list-item>
-      <mat-list-item> Usuarios </mat-list-item>
-      <mat-list-item> Servicios </mat-list-item>
-    </mat-list>
+
+    <mat-nav-list>
+      <mat-list-item>
+        <a matLine [routerLink]="[ '/logged']">Dashboard</a>
+      </mat-list-item>
+      <mat-list-item>
+        <a matLine [routerLink]="[ '/logged/playas']">Playas</a>
+      </mat-list-item>
+    </mat-nav-list>
+
   </mat-sidenav>
   <!-- contenido del sidenav -->
   <div class="app-sidenav-content">
