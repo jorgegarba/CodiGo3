@@ -6,16 +6,13 @@
     width: 100%;
     min-width: 100%;
 }
-
 .app-sidenav{
     width: 240px;
     
 }
-
 .wrapper{
     margin: 50px;
 }
-
 .app-sidenav-content{
     display: flex;
     height: 100%;

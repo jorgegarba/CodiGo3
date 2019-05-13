@@ -3,14 +3,11 @@
 html, body {
     margin:0;
 }
-
-
 .my-toolbar {
     position: sticky;
     top: 0;
     z-index: 4000;
     box-shadow: 0px 10px 10px -6px rgba(0,0,0,0.75);
-
 }
 .container {
     height: 100vh;
