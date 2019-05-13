@@ -2,5 +2,37 @@
   <mat-spinner></mat-spinner>
 </div>
 <div *ngIf="_sPlaya.playasRetorno">
-  <pre>{{_sPlaya.playasRetorno | json}}</pre>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-icon>list</mat-icon>
+      <mat-card-title>Lista de Playas de Estacionamiento</mat-card-title>
+      <mat-card-subtitle>Dashboard y Lista de tablas</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <!-- tabs -->
+      <mat-tab-group>
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">thumb_up</mat-icon>
+            Dashboard
+          </ng-template>
+          Content 1
+        </mat-tab>
+
+        <mat-tab>
+          <ng-template mat-tab-label>
+            <mat-icon class="tab-icon">thumb_up</mat-icon>
+            Lista de Playas
+          </ng-template>
+          Lista de playas
+        </mat-tab>
+      </mat-tab-group>
+
+      <!-- /tabs -->
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-button>LIKE</button>
+      <button mat-button>SHARE</button>
+    </mat-card-actions>
+  </mat-card>
 </div>
