@@ -7,12 +7,19 @@ import { MainContentComponent } from './components/main-content/main-content.com
 import { MaterialModule } from '../material.module';
 import { PlayasComponent } from './components/playas/playas.component';
 
+// modulo de mapas AGM
+import { AgmCoreModule } from '@agm/core';
+
+
 @NgModule({
   declarations: [ToolbarComponent, SidenavComponent, MainContentComponent, PlayasComponent],
   imports: [
     CommonModule,
     LoggedRoutingModule,
-    MaterialModule
+    MaterialModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyBcjhtE0FIFEO92Z_7xKQWODx3I_QXq33E'
+    })
   ]
 })
 export class LoggedModule { }
