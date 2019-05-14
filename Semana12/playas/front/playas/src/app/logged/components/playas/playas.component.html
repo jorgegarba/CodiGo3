@@ -1,7 +1,7 @@
-<div *ngIf="!_sPlaya.playasRetorno">
+<div *ngIf="!playasList">
   <mat-spinner></mat-spinner>
 </div>
-<div *ngIf="_sPlaya.playasRetorno">
+<div *ngIf="playasList">
   <mat-card class="example-card">
     <mat-card-header>
       <mat-icon>list</mat-icon>
@@ -34,27 +34,33 @@
                     The actual rendered columns are set as a property on the row definition" -->
 
             <!-- Position Column -->
-            <ng-container matColumnDef="position">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> No. </th>
-              <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+            <ng-container matColumnDef="playa_id">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Id. </th>
+              <td mat-cell *matCellDef="let objPlaya"> {{objPlaya.playa_id}} </td>
             </ng-container>
 
             <!-- Name Column -->
-            <ng-container matColumnDef="name">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
-              <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+            <ng-container matColumnDef="playa_nom">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+              <td mat-cell *matCellDef="let objPlaya"> {{objPlaya.playa_nom}} </td>
             </ng-container>
 
             <!-- Weight Column -->
-            <ng-container matColumnDef="weight">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Weight </th>
-              <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+            <ng-container matColumnDef="tot">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Espacios Total </th>
+              <td mat-cell *matCellDef="let objPlaya"> {{objPlaya.tot}} </td>
             </ng-container>
 
             <!-- Symbol Column -->
-            <ng-container matColumnDef="symbol">
-              <th mat-header-cell *matHeaderCellDef mat-sort-header> Symbol </th>
-              <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+            <ng-container matColumnDef="lib">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Espacios Libres </th>
+              <td mat-cell *matCellDef="let objPlaya"> {{objPlaya.lib}} </td>
+            </ng-container>
+
+            <!-- Symbol Column -->
+            <ng-container matColumnDef="ocu">
+              <th mat-header-cell *matHeaderCellDef mat-sort-header> Espacios Ocupados </th>
+              <td mat-cell *matCellDef="let objPlaya"> {{objPlaya.ocu}} </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

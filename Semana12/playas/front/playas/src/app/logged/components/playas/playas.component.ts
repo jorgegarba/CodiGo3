@@ -22,7 +22,8 @@ const ELEMENT_DATA = [
   styleUrls: ['./playas.component.css']
 })
 export class PlayasComponent implements OnInit {
- 
+
+  playasList:any;
 
   paginator;
   @ViewChild(MatPaginator) set matSort(content: MatPaginator) {
@@ -39,13 +40,36 @@ export class PlayasComponent implements OnInit {
     }
   }
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  playas = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['playa_id', 'playa_nom', 'tot', 'lib', 'ocu'];
+  playas;
 
   constructor(private _sPlaya:PlayaService) { }
 
   ngOnInit() {
-    
+    this.setPlayasList();
+  }
+
+  setPlayasList(){
+    this._sPlaya.getPlayas().subscribe((playas:any)=>{
+      // iterando el contenido de las playas [content]
+      playas.content.forEach((playa)=>{
+        // 'playa' => es un elemento playa
+        // creamos 3 variables en cada iteracion (para cada playa)
+        let total,libres,ocupados = 0;
+        // calculamos el total del arreglo de nombre t_slotplayas de cada elemento
+        total = playa.t_slotplayas.length;
+        // calculamos el total de slots libre
+        libres = playa.t_slotplayas.filter(slot=>slot.slotp_est==0).length;
+        // calculamos el total de slots ocupados
+        ocupados = playa.t_slotplayas.filter(slot=>slot.slotp_est==1).length;
+        // asignando 3 nuevas propiedades al objeto playa
+        playa.tot = total;
+        playa.lib = libres;
+        playa.ocu = ocupados;
+      });
+      this.playasList = playas.content;
+      this.playas = new MatTableDataSource(this.playasList);
+    });
   }
 
   applyFilter(filterValue: string) {
