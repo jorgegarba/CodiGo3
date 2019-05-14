@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild} from '@angular/core';
 import { PlayaService } from '../../services/playa.service';
-
+import { MatTableDataSource, MatPaginator, MatSort} from '@angular/material';
 
 
 const ELEMENT_DATA = [
@@ -22,13 +22,38 @@ const ELEMENT_DATA = [
   styleUrls: ['./playas.component.css']
 })
 export class PlayasComponent implements OnInit {
+ 
+
+  paginator;
+  @ViewChild(MatPaginator) set matSort(content: MatPaginator) {
+    this.paginator = content;
+    if (this.paginator){
+       this.playas.paginator = this.paginator;
+    }
+  }
+  sort;
+  @ViewChild(MatSort) set content(content: MatSort) {
+    this.sort = content;
+    if (this.sort){
+       this.playas.sort = this.sort;
+    }
+  }
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  playas = ELEMENT_DATA;
+  playas = new MatTableDataSource(ELEMENT_DATA);
 
   constructor(private _sPlaya:PlayaService) { }
 
   ngOnInit() {
+    
+  }
+
+  applyFilter(filterValue: string) {
+    this.playas.filter = filterValue.trim().toLowerCase();
+
+    if (this.playas.paginator) {
+      this.playas.paginator.firstPage();
+    }
   }
 
 }

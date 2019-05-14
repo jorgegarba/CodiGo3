@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient,HttpHeaders} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +31,13 @@ export class PlayaService {
         playa.ocu = ocupados;
       });
       this.playasRetorno = playas.content;
+    });
+  }
+
+  pagarConCulqi(json){
+    let headers = new HttpHeaders().set("Content-Type","application/json");
+    headers.set('Bearer','tkn_test_1E8sNkBc0qv2b4yv');
+    this._http.post('https://api.culqi.com/v2/charges',json,{headers:headers}).subscribe(rpta=>{console.log(rpta);
     });
   }
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PlayaService } from '../../services/playa.service';
 
 @Component({
   selector: 'app-main-content',
@@ -7,9 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainContentComponent implements OnInit {
 
-  constructor() { }
+  constructor(private _sPlaya: PlayaService) { }
 
   ngOnInit() {
+
+  }
+  pagar() {
+    let objPago = {
+      "amount": 1500,
+      "currency_code": "PEN",
+      "email": "jorgegarba@gmail.com",
+      "source_id": "tkn_test_N56x6d9HXeyEuzLH"
+    }
+    this._sPlaya.pagarConCulqi(objPago);
   }
 
 }
