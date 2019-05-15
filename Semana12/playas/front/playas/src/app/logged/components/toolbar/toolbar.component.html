@@ -14,5 +14,11 @@
       </mat-icon>
        Cerrar Sesión
     </button>
+    <button mat-menu-item (click)="cerrarSesion()" *ngIf="usuario.rol===1">
+        <mat-icon>
+          exit_to_app
+        </mat-icon>
+         admin
+      </button>
   </mat-menu>
 </mat-toolbar>

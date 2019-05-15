@@ -11,7 +11,10 @@ export class PlayaService {
   }
 
   getPlayas(){
+    // CON OBSERVABLES
     return this._http.get('http://localhost:3000/api/playa');
+    // CON PROMESAS
+    // return fetch('http://localhost:3000/api/playa');    
   }
 
   pagarConCulqi(json){
