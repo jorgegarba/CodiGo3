@@ -6,13 +6,17 @@
     <mat-card-content>
       <form class="example-form">
         <mat-form-field class="example-full-width">
-          <input matInput type="email" placeholder="Ingrese su email" required [(ngModel)]="objUsuario.usu_email"
-            name="usu_email">
+          <input matInput type="email" placeholder="Ingrese su email"
+                required [(ngModel)]="objUsuario.usu_email"
+              name="usu_email"
+              (keyup.enter)="login()">
         </mat-form-field>
         <br>
         <mat-form-field class="example-full-width">
-          <input matInput type="password" placeholder="Ingrese su password" required [(ngModel)]="objUsuario.usu_pass"
-            name="usu_pass">
+          <input matInput type="password" placeholder="Ingrese su password" 
+          required [(ngModel)]="objUsuario.usu_pass"
+            name="usu_pass"
+            (keyup.enter)="login()">
         </mat-form-field>
       </form>
     </mat-card-content>

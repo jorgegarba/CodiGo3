@@ -67,10 +67,17 @@
 
             <!-- CONTENIDO -->
             <ng-container matColumnDef="expandedDetail">
-              <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+              <td mat-cell *matCellDef="let objPlaya" [attr.colspan]="displayedColumns.length">
                 <div class="example-element-detail"
-                  [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
-                  CONTENIDO
+                  [@detailExpand]="objPlaya == expandedElement ? 'expanded' : 'collapsed'">
+
+                  <agm-map [latitude]="+objPlaya.playa_lat"
+                          [longitude]="+objPlaya.playa_lng"
+                          [zoom]="15"
+                          [styles]="estiloMapa">
+                    <agm-marker [latitude]="+objPlaya.playa_lat" [longitude]="+objPlaya.playa_lng"></agm-marker>
+                  </agm-map>
+
                 </div>
               </td>
             </ng-container>

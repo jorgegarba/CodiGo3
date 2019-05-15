@@ -3,4 +3,16 @@
     <mat-icon>menu</mat-icon>
   </button>
   <span>Sistema de Playas</span>
+
+  <span class="example-spacer"></span>
+  <mat-icon>account_box</mat-icon>
+  <button mat-button [matMenuTriggerFor]="menu">{{usuario}}</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="cerrarSesion()">
+      <mat-icon>
+        exit_to_app
+      </mat-icon>
+       Cerrar Sesión
+    </button>
+  </mat-menu>
 </mat-toolbar>

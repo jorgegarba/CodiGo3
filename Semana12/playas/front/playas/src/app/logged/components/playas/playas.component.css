@@ -50,3 +50,8 @@ tr.example-detail-row {
   .example-element-description-attribution {
     opacity: 0.5;
   }
+
+  agm-map{
+    flex:1;
+    height: 400px;
+  }
