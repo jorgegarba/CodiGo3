@@ -1,3 +1,19 @@
-<p>
-  login works!
-</p>
+<h1>Login</h1>
+<hr>
+<div class="row">
+  <div class="col-md-6">
+    <form>
+      <input type="text"
+              placeholder="Ingrese su nombre..."
+              class="form-control mb-4"
+              [(ngModel)]="nombre"
+              name="nombre">
+
+      <button type="button" 
+              class="btn btn-block btn-primary"
+              (click)="login()">
+        Ingresar a la salita )
+      </button>
+    </form>
+  </div>
+</div>

@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
+import {FormsModule} from '@angular/forms';
 
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { FooterComponent } from './components/footer/footer.component';
@@ -17,6 +18,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3700', options: {} };
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     SocketIoModule.forRoot(config)
   ],
