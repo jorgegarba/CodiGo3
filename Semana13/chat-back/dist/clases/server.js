@@ -6,8 +6,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const http_1 = __importDefault(require("http"));
 const socket_io_1 = __importDefault(require("socket.io"));
+const clientes_1 = require("./clientes");
+const cliente_1 = require("./cliente");
 class Server {
     constructor() {
+        this.clientes = new clientes_1.Clientes();
         this.app = express_1.default();
         this.app.use((req, res, next) => {
             res.header('Access-Control-Allow-Origin', 'http://localhost:4200');
@@ -27,6 +30,14 @@ class Server {
         this.io.on('connect', (cliente) => {
             console.log("Uy!, alguien se conectó");
             console.log(cliente.id);
+            let objCliente = new cliente_1.Cliente(cliente.id);
+            this.clientes.add(objCliente);
+            console.log("nueva lista de conectados");
+            console.log(this.clientes.getClientes());
+            cliente.on('disconnect', () => {
+                console.log(`El cliente ${cliente.id} se desconectó`);
+                this.clientes.remove(cliente.id);
+            });
         });
     }
     asignarRutas() {

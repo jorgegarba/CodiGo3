@@ -2,12 +2,15 @@ import express from 'express';
 import http from 'http';
 import socketIO from 'socket.io';
 import {Response,Request, NextFunction} from 'express';
+import { Clientes } from './clientes';
+import { Cliente } from './cliente';
 
 export default class Server{
     public app:express.Application;
     public puerto:any;
     public httpServer:http.Server;
     public io:socketIO.Server;
+    public clientes:Clientes = new Clientes();
 
     constructor(){
         this.app = express();
@@ -32,8 +35,16 @@ export default class Server{
         this.io.on('connect',(cliente)=>{
             console.log("Uy!, alguien se conectó");
             console.log(cliente.id);
-        });
-        
+            let objCliente = new Cliente(cliente.id);
+            this.clientes.add(objCliente);
+            console.log("nueva lista de conectados");
+            console.log(this.clientes.getClientes());    
+
+            cliente.on('disconnect',()=>{
+                console.log(`El cliente ${cliente.id} se desconectó`);
+                this.clientes.remove(cliente.id);
+            });
+        });        
     }
 
     asignarRutas(){
