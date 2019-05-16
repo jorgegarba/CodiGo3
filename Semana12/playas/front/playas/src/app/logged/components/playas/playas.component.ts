@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild} from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy} from '@angular/core';
 import { PlayaService } from '../../services/playa.service';
 import { MatTableDataSource, MatPaginator, MatSort} from '@angular/material';
 
@@ -17,8 +17,7 @@ import { Subscription } from 'rxjs';
     ]),
   ],
 })
-export class PlayasComponent implements OnInit {
-
+export class PlayasComponent implements OnInit, OnDestroy{
 
   playasList:any;
   expandedElement: any | null;
