@@ -12,4 +12,11 @@ export class Clientes {
     remove(id:string){
         this.lista = this.lista.filter(cliente=>cliente.id != id);
     }
+    update(objCliente:Cliente){
+        this.lista.forEach((cliente:Cliente)=>{
+            if(cliente.id === objCliente.id){
+                cliente.nombre = objCliente.nombre;
+            }
+        })
+    }
 }

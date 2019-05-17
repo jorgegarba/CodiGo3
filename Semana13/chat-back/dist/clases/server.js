@@ -28,8 +28,6 @@ class Server {
     escucharSockets() {
         console.log("Escuchando los sockets");
         this.io.on('connect', (cliente) => {
-            console.log("Uy!, alguien se conectó");
-            console.log(cliente.id);
             let objCliente = new cliente_1.Cliente(cliente.id);
             this.clientes.add(objCliente);
             console.log("nueva lista de conectados");
@@ -37,6 +35,17 @@ class Server {
             cliente.on('disconnect', () => {
                 console.log(`El cliente ${cliente.id} se desconectó`);
                 this.clientes.remove(cliente.id);
+                this.io.emit('retorno-usuarios', this.clientes.getClientes());
+            });
+            cliente.on('configurar-usuario', (data) => {
+                let objCliente = new cliente_1.Cliente(cliente.id);
+                objCliente.nombre = data;
+                this.clientes.update(objCliente);
+                console.log("nueva lista de conectados");
+                console.log(this.clientes.getClientes());
+            });
+            cliente.on('lista-usuarios', () => {
+                this.io.emit('retorno-usuarios', this.clientes.getClientes());
             });
         });
     }

@@ -8,8 +8,15 @@ export class WebsocketService {
 
   public socketStatus = false;
 
-  constructor(private _socket:Socket) {
+  constructor(public _socket:Socket) {
     this.checkStatus();
+    this.cargarStorage();
+  }
+
+  cargarStorage(){
+    if(localStorage.getItem('nombre')){
+      this._socket.emit('configurar-usuario',localStorage.getItem('nombre'));
+    }
   }
 
   checkStatus(){
@@ -23,4 +30,17 @@ export class WebsocketService {
     });
   }
 
+  login(nombre:String){
+    this.guardarStorage(nombre);
+    this._socket.emit('configurar-usuario',nombre);
+  }
+  guardarStorage(nombre){
+    localStorage.setItem('nombre',nombre);
+  }
+  pedirUsuarios(){
+    this._socket.emit('lista-usuarios');
+  }
+  retornoUsuarios(){
+    return this._socket.fromEvent('retorno-usuarios'); 
+  }
 }
