@@ -1,3 +1,14 @@
-<p>
-  chat works!
-</p>
+<h3>Chat</h3>
+<hr>
+<div id="mensajes" class="p-3">
+
+</div>
+<form (ngSubmit)=enviarMensaje()>
+  <input type="text"
+         [(ngModel)]="mensaje"
+         class="form-control mt-3 p-3"
+         name="mensaje"
+         placeholder="Escriba su mensaje..."
+         autocomplete="off"
+         autofocus>
+</form>

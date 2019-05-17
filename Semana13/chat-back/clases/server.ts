@@ -51,11 +51,21 @@ export default class Server{
                 this.clientes.update(objCliente);
                 console.log("nueva lista de conectados");
                 console.log(this.clientes.getClientes());
+                this.io.emit('retorno-usuarios',this.clientes.getClientes());
             });
 
             cliente.on('lista-usuarios',()=>{
                 this.io.emit('retorno-usuarios',this.clientes.getClientes());
             });
+
+            cliente.on('enviar-mensaje',(mensaje)=>{
+                let objCliente:any = this.clientes.getClienteById(cliente.id);
+                let content = {
+                    mensaje:mensaje,
+                    nombre: objCliente.nombre
+                }
+                this.io.emit('nuevo-mensaje',content);
+            })
         });        
     }
 

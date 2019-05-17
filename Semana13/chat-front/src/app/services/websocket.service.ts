@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Socket} from 'ngx-socket-io';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ export class WebsocketService {
 
   public socketStatus = false;
 
-  constructor(public _socket:Socket) {
+  constructor(public _socket:Socket,
+              private _router:Router) {
     this.checkStatus();
     this.cargarStorage();
   }
@@ -30,6 +32,12 @@ export class WebsocketService {
     });
   }
 
+  logout(){
+    localStorage.removeItem('nombre');
+    this._socket.emit('configurar-usuario','sin-nombre');
+    this._router.navigateByUrl('');
+  }
+
   login(nombre:String){
     this.guardarStorage(nombre);
     this._socket.emit('configurar-usuario',nombre);
@@ -42,5 +50,12 @@ export class WebsocketService {
   }
   retornoUsuarios(){
     return this._socket.fromEvent('retorno-usuarios'); 
+  }
+  nuevoMensaje(){
+    return this._socket.fromEvent('nuevo-mensaje');
+  }
+
+  emitirMensaje(mensaje:string){
+    this._socket.emit('enviar-mensaje',mensaje);
   }
 }

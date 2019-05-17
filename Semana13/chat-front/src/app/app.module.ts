@@ -13,6 +13,28 @@ import { ListaUsuariosComponent } from './components/lista-usuarios/lista-usuari
 import { ChatComponent } from './components/chat/chat.component';
 const config: SocketIoConfig = { url: 'http://localhost:3700', options: {} };
 
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+ 
+ 
+let configLogin = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("Google-OAuth-Client-Id")
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("1018900544985676")
+  }
+]);
+ 
+export function provideConfig() {
+  return configLogin;
+}
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,9 +48,15 @@ const config: SocketIoConfig = { url: 'http://localhost:3700', options: {} };
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    SocketIoModule.forRoot(config)
+    SocketIoModule.forRoot(config),
+    SocialLoginModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

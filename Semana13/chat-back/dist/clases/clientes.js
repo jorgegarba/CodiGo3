@@ -20,5 +20,12 @@ class Clientes {
             }
         });
     }
+    getClienteById(id) {
+        for (let i = 0; i < this.lista.length; i++) {
+            if (this.lista[i].id === id) {
+                return this.lista[i];
+            }
+        }
+    }
 }
 exports.Clientes = Clientes;
