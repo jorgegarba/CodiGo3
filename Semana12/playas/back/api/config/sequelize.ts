@@ -8,8 +8,8 @@ import {usuario_model} from './../models/usuario';
 
 const Sequelize = require('sequelize');
 
-export const sequelize = new Sequelize('playas','root','',{
-    host:'localhost',
+export const sequelize = new Sequelize('aSFEWAVcAB','aSFEWAVcAB','3ec6Dqih8N',{
+    host:'remotemysql.com',
     dialect:'mysql',
     timezone:'-05:00',
     logging: console.log

@@ -1,0 +1,9 @@
+.btn-red{
+    border-radius: 5px;
+    padding: 6px;
+    background-color: brown;
+    color: azure;
+    font-weight: 600;
+    outline: none;
+    border: 0;
+}

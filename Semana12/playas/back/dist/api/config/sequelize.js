@@ -7,8 +7,8 @@ const slotplaya_1 = require("./../models/slotplaya");
 const registro_1 = require("./../models/registro");
 const usuario_1 = require("./../models/usuario");
 const Sequelize = require('sequelize');
-exports.sequelize = new Sequelize('playas', 'root', '', {
-    host: 'localhost',
+exports.sequelize = new Sequelize('aSFEWAVcAB', 'aSFEWAVcAB', '3ec6Dqih8N', {
+    host: 'remotemysql.com',
     dialect: 'mysql',
     timezone: '-05:00',
     logging: console.log
