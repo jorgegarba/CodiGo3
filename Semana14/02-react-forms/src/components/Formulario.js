@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import uuid from 'uuid';
 
 export default class Formulario extends Component {
 
@@ -16,14 +17,17 @@ export default class Formulario extends Component {
     enviarGasto = (e)=>{
         e.preventDefault();
         let objGasto = {
+            id: uuid(),
             descripcion: this.descripcionRef.current.value,
             monto: this.montoRef.current.value,
             fecha: this.fechaRef.current.value,
-        }
+        }    
+
+        e.currentTarget.reset();
 
         this.props.agregarGasto(objGasto);
-        
     }
+
     render() {
         return (
             <form onSubmit={this.enviarGasto}>

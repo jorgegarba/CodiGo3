@@ -1,21 +1,28 @@
 import React, { Component } from 'react'
 import Header from './components/Header';
 import Formulario from './components/Formulario';
+import ListaGastos from './components/ListaGastos';
 
 export default class App extends Component {
 
   constructor(props){
     super(props);
     this.state = {
-      gastos:[]
+      gastos:[],
+      presupuesto: 1000,
+      resto:1000,
     }
   }
 
   agregarGasto = (objGasto) => {
-    let {gastos} = this.state;
+    let {gastos, resto} = this.state;
     gastos.push(objGasto);
+
+    resto = resto - objGasto.monto;
+
     this.setState({
-      gastos
+      gastos:gastos,
+      resto:resto
     });
   }
 
@@ -29,7 +36,9 @@ export default class App extends Component {
               <Formulario agregarGasto={this.agregarGasto}/>
             </div>
             <div className="col-md-6">
-              columna 2
+              <ListaGastos gastos={this.state.gastos}
+                          presupuesto={this.state.presupuesto}
+                          resto={this.state.resto}/>
             </div>
           </div>
         </div>
