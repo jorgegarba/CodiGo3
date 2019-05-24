@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 
 export default class Presupuesto extends Component {
     render() {
@@ -8,4 +9,8 @@ export default class Presupuesto extends Component {
             </div>
         )
     }
+}
+
+Presupuesto.propTypes = {
+    presupuesto: PropTypes.number.isRequired
 }

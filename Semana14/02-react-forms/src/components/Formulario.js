@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import uuid from 'uuid';
+import PropTypes from 'prop-types';
 
 export default class Formulario extends Component {
 
@@ -12,20 +13,34 @@ export default class Formulario extends Component {
         this.descripcionRef = React.createRef();
         this.montoRef = React.createRef();
         this.fechaRef = React.createRef();
+        this.state = {
+            error:false
+        }
     }
 
     enviarGasto = (e)=>{
         e.preventDefault();
+
+        if(this.descripcionRef.current.value == "" ||
+            this.montoRef.current.value == "" ||
+            this.fechaRef.current.value == ""){
+            this.setState({
+                error:true
+            });
+            return;
+        }
+
         let objGasto = {
             id: uuid(),
             descripcion: this.descripcionRef.current.value,
             monto: this.montoRef.current.value,
             fecha: this.fechaRef.current.value,
         }    
-
         e.currentTarget.reset();
-
         this.props.agregarGasto(objGasto);
+        this.setState({
+            error:false
+        })
     }
 
     render() {
@@ -46,7 +61,6 @@ export default class Formulario extends Component {
                                 id="exampleInputEmail1"
                                 placeholder="Ejm: Comida"
                                 ref={this.descripcionRef}/>
-                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
                     <div className="form-group">
                         <label htmlFor="exampleInputPassword1">Monto del Gasto</label>
@@ -66,7 +80,16 @@ export default class Formulario extends Component {
 
                     <button type="submit" className="btn btn-primary">Crear Gasto</button>
                 </fieldset>
+                {
+                    this.state.error ? 
+                    <div className="alert alert-danger mt-5 text-center">
+                    Todos los campos son obligatorios</div> : null
+                }  
             </form>
         )
     }
+}
+
+Formulario.propTypes = {
+    agregarGasto: PropTypes.func.isRequired
 }
