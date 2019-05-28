@@ -32,5 +32,20 @@ exports.usuario_controller = {
                 });
             }
         });
-    }
+    },
+    updateById: (req, res) => {
+        mongoose_1.Usuario.findByIdAndUpdate(req.body._id, req.body, { new: true }, (error, actualizado) => {
+            if (!error) {
+                res.status(200).json({
+                    message: "updated",
+                    content: actualizado
+                });
+            }
+            else {
+                res.status(500).json({
+                    error: "Hubo un error en la actualización"
+                });
+            }
+        });
+    },
 };

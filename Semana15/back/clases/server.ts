@@ -1,6 +1,7 @@
 import express from 'express';
 import {Response,Request, NextFunction} from 'express';
 import {usuario_router} from './../routes/Usuario';
+import {video_router} from './../routes/Video';
 import mongoose from 'mongoose';
 
 export default class Server{
@@ -39,6 +40,7 @@ export default class Server{
             res.send("Buenas");
         });
         this.app.use('/api',usuario_router);
+        this.app.use('/api',video_router);
     }
 
     start(){

@@ -5,6 +5,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const Usuario_1 = require("./../routes/Usuario");
+const Video_1 = require("./../routes/Video");
 const mongoose_1 = __importDefault(require("mongoose"));
 class Server {
     // public conexion:any;
@@ -36,6 +37,7 @@ class Server {
             res.send("Buenas");
         });
         this.app.use('/api', Usuario_1.usuario_router);
+        this.app.use('/api', Video_1.video_router);
     }
     start() {
         this.app.listen(this.puerto, () => {
