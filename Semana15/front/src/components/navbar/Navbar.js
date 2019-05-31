@@ -18,6 +18,7 @@ import { makeStyles, useTheme } from '@material-ui/core/styles';
 import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import Home from './../home/Home';
 import Nosotros from './../nosotros/Nosotros';
+import Videos from '../videos/Videos';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -71,14 +72,18 @@ function Navbar(props) {
           <ListItemIcon>
             <InboxIcon />
           </ListItemIcon>
-
           <ListItemText primary={"Home"} />
-
-
-
+        </ListItem>
+        <ListItem button component={Link} to="/videos">
+          <ListItemIcon>
+            <InboxIcon />
+          </ListItemIcon>
+          <ListItemText primary={"Videos"} />
         </ListItem>
       </List>
+
       <Divider />
+      
       <List>
         <ListItem button component={Link} to="/nosotros">
           <ListItemIcon>
@@ -149,6 +154,7 @@ function Navbar(props) {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route exact path="/nosotros" component={Nosotros} />
+            <Route exact path="/videos" component={Videos} />
           </Switch>
         </main>
       </div>
