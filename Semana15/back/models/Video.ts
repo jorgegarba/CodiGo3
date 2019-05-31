@@ -8,10 +8,7 @@ export var videoSchema = new Schema({
     vid_likes: [
         {
             usu_nom:String,
-            usu_email:{
-                type: String,
-                unique:true,
-            },
+            usu_email:String
         }
     ],
     vid_comments:[
