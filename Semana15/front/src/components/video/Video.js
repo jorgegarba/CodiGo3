@@ -49,7 +49,7 @@ function Video({video}) {
     }
 
     return (
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={6} md={4} lg={3}>
             <Card className={classes.card}>
                 <CardHeader
                     avatar={
@@ -99,6 +99,7 @@ function Video({video}) {
                         <Typography paragraph>
                             Heat 1/2 cup of the broth in a pot until simmering, add saffron and set aside for 10
                             minutes.
+
           </Typography>
                         <Typography paragraph>
                             Heat oil in a (14- to 16-inch) paella pan or a large, deep skillet over medium-high
