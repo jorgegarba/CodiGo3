@@ -1,0 +1,11 @@
+.formulario{
+    display: flex ;
+    justify-content:'center' ;  
+}
+
+.textField {
+    margin-left: 10px ;
+    margin-right: 10px ;
+    width: 50% ;
+}
+

@@ -20,6 +20,7 @@ import Home from './../home/Home';
 import Nosotros from './../nosotros/Nosotros';
 import Videos from '../videos/Videos';
 import CrearVideo from '../crearvideo/CrearVideo';
+import CrearVideoV2 from '../crearvideov2/CrearVideoV2';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -96,6 +97,19 @@ function Navbar(props) {
         </ListItem>
 
       </List>
+
+      <Divider />
+
+
+      <List>
+        <ListItem button component={Link} to="/forms">
+          <ListItemIcon>
+            <MailIcon />
+          </ListItemIcon>
+          <ListItemText primary={"Ejemplo Forms"} />
+        </ListItem>
+
+      </List>
     </div>
   );
 
@@ -156,7 +170,8 @@ function Navbar(props) {
             <Route exact path="/" component={Home} />
             <Route exact path="/nosotros" component={Nosotros} />
             <Route exact path="/videos" component={Videos} />
-            <Route exact path="/crearvideo" component={CrearVideo} />
+            <Route exact path="/crearvideo" component={CrearVideoV2} />
+            <Route exact path="/forms" component={CrearVideo} />
           </Switch>
         </main>
       </div>
