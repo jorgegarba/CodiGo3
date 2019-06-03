@@ -1,11 +1,15 @@
 .formulario{
     display: flex ;
-    justify-content:'center' ;  
+    flex-wrap: wrap;
 }
 
 .textField {
     margin-left: 10px ;
     margin-right: 10px ;
     width: 50% ;
+}
+
+Button[type="submit"]{
+    margin-top: 20px;
 }
 
