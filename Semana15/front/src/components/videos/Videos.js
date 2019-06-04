@@ -38,9 +38,8 @@ export default class Videos extends Component {
                             videos.map(video=>(<Video key={video._id} video={video}/>))
                         }
                     </Grid>
-                    <Fab color="secondary" aria-label="Edit" style={{position:'absolute',bottom:'50px', right:'50px'}} component={Link} to="/crearvideo">
+                    <Fab color="secondary" aria-label="Edit" style={{position:'fixed',bottom:'50px', right:'50px'}} component={Link} to="/crearvideo">
                             <Icon style={{color:'white'}}>add_icon</Icon>
-                        
                     </Fab>
                 </React.Fragment>
             )

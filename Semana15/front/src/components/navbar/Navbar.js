@@ -21,6 +21,7 @@ import Nosotros from './../nosotros/Nosotros';
 import Videos from '../videos/Videos';
 import CrearVideo from '../crearvideo/CrearVideo';
 import CrearVideoV2 from '../crearvideov2/CrearVideoV2';
+import InfoVideo from '../infovideo/InfoVideo';
 const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
@@ -172,6 +173,7 @@ function Navbar(props) {
             <Route exact path="/videos" component={Videos} />
             <Route exact path="/crearvideo" component={CrearVideoV2} />
             <Route exact path="/forms" component={CrearVideo} />
+            <Route exact path="/infovideo/:id" component={InfoVideo} />
           </Switch>
         </main>
       </div>

@@ -16,6 +16,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import Grid from '@material-ui/core/Grid';
+import {Link} from 'react-router-dom';
 
 const useStyles = makeStyles(theme => ({
     card: {
@@ -59,7 +60,7 @@ function Video({video}) {
                     }
                     action={
                         <IconButton>
-                            <MoreVertIcon />
+                            <MoreVertIcon component={Link} to={`infovideo/${video._id}`}/>
                         </IconButton>
                     }
                     title={video.vid_titu}
