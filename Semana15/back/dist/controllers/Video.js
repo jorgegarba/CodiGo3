@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("./../config/mongoose");
+// file system => libreria propia de node para manejar archivos
+var fs = require('fs');
+// path_module => libreria propia de node para manejar archivos
+var path_module = require('path');
 exports.video_controller = {
     create: (req, res) => {
         mongoose_1.Video.create(req.body).then(response => {
@@ -9,6 +13,25 @@ exports.video_controller = {
             }
             else {
                 res.status(500).json({ message: 'Error al crear el video' });
+            }
+        });
+    },
+    deleteById: (req, res) => {
+        let { id } = req.params;
+        mongoose_1.Video.findByIdAndDelete(id, (error, objVideo) => {
+            if (!error && objVideo) {
+                // eliminar el archivo del video
+                fs.unlink(`imagenes/${objVideo.vid_img}`, (err) => {
+                    if (!err) {
+                        res.status(200).json({ message: 'deleted', content: objVideo });
+                    }
+                    else {
+                        res.status(500).json({ error: "error al borrar el video" });
+                    }
+                });
+            }
+            else {
+                res.status(500).json({ error: "error al borrar el video" });
             }
         });
     },
@@ -46,4 +69,14 @@ exports.video_controller = {
             }
         });
     },
+    getImagenByName: (req, res) => {
+        let ruta = `imagenes/${req.params.name}`;
+        let rutaDefault = `imagenes/default.png`;
+        if (fs.existsSync(ruta)) {
+            return res.sendFile(path_module.resolve(ruta));
+        }
+        else {
+            return res.sendFile(path_module.resolve(rutaDefault));
+        }
+    }
 };

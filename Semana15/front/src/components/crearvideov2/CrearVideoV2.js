@@ -21,7 +21,8 @@ export default class CrearVideoV2 extends Component {
         this.videoRef = React.createRef();
         // const [open, setOpen] = React.useState(false);
         this.state = {
-            open: false
+            open: false,
+            idVideoCreado:'',
         };
 
     }
@@ -66,10 +67,11 @@ export default class CrearVideoV2 extends Component {
                         })
                         .then(data2 => {
                             if (data2.message === "updated") {
-                                // formulario.reset();
-                                e.target.reset();
-                                console.log("hecho");
+                                formulario.reset();
                                 this.handleClick();
+                                this.setState({
+                                    idVideoCreado: data2.content._id
+                                });
                             } else {
                                 console.error("Error");
                             }
@@ -88,6 +90,20 @@ export default class CrearVideoV2 extends Component {
         }
         // setOpen(false);
         this.setState({ open: false });
+    }
+    handleRevertir = ()=>{
+        console.log("handleRevertir");
+        
+        let headers = {
+            method: 'DELETE',
+        };
+
+        fetch(`http://localhost:3700/api/video/${this.state.idVideoCreado}`,headers).then(response=>{
+            return response.json();
+        }).then(data=>{
+            this.handleClose();
+            console.log(data);
+        })
     }
 
     render() {
@@ -135,18 +151,18 @@ export default class CrearVideoV2 extends Component {
                 <Snackbar
                     anchorOrigin={{
                         vertical: 'bottom',
-                        horizontal: 'left',
+                        horizontal: 'right',
                     }}
                     open={this.state.open}
-                    autoHideDuration={6000}
+                    autoHideDuration={10000}
                     onClose={this.handleClose}
                     ContentProps={{
                         'aria-describedby': 'message-id',
                     }}
-                    message={<span id="message-id">Note archived</span>}
+                    message={<span id="message-id">Video Creado</span>}
                     action={[
-                        <Button key="undo" color="secondary" size="small" onClick={this.handleClose}>
-                            UNDO
+                        <Button key="undo" color="secondary" size="small" onClick={this.handleRevertir}>
+                            DESHACER
                         </Button>,
                         <IconButton
                             key="close"

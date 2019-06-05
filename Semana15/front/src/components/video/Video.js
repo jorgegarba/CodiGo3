@@ -59,8 +59,8 @@ function Video({video}) {
                         </Avatar>
                     }
                     action={
-                        <IconButton>
-                            <MoreVertIcon component={Link} to={`infovideo/${video._id}`}/>
+                        <IconButton component={Link} to={`infovideo/${video._id}`}>
+                            <MoreVertIcon/>
                         </IconButton>
                     }
                     title={video.vid_titu}
@@ -68,7 +68,7 @@ function Video({video}) {
                 />
                 <CardMedia
                     className={classes.media}
-                    image="http://placehold.it/300x300/"
+                    image={`http://localhost:3700/api/getImagenByName/${video.vid_img}`}
                     title={video.vid_link}
                 />
                 <CardContent>
