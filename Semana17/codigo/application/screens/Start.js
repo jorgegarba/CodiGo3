@@ -3,9 +3,22 @@ import { Text, View } from 'react-native'
 import BackgroundImage from '../components/BackgroundImage';
 import AppButton from '../components/AppButton';
 
-
-
 export default class Start extends Component {
+
+    static navigationOptions = {
+        title: 'Playas App',
+    };
+
+    iniciarSesion = () => {
+        // redireccionar a la pantalla de incio de sesion
+        this.props.navigation.navigate('miLogin');
+    }
+
+    registrame = ()=>{
+        // redireccionar a la pantalla de incio de sesion
+        this.props.navigation.navigate('miRegister');
+    }
+
     render() {
         return (
             <BackgroundImage source={require('./../../assets/bg.jpg')}>
@@ -14,7 +27,7 @@ export default class Start extends Component {
                             bgColor={'rgba(220,100,20,0.7)'}
                             iconName={'sign-in'}
                             title={"Iniciar Sesión"}
-                            action={()=>{}}
+                            action={this.iniciarSesion}
                             iconColor={"#fff"}
                             iconSize={30}
                             setWidth={true}
@@ -23,7 +36,7 @@ export default class Start extends Component {
                             bgColor={'rgba(220,200,50,0.7)'}
                             iconName={'user-plus'}
                             title={"Registrarme"}
-                            action={()=>{}}
+                            action={this.registrame}
                             iconColor={"#fff"}
                             iconSize={30}
                             setWidth={true}

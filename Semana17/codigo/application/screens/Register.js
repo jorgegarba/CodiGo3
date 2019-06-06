@@ -3,14 +3,29 @@ import { Text, View } from 'react-native'
 import { Card } from 'react-native-elements';
 import BackgroundImage from '../components/BackgroundImage';
 
+import * as firebase from 'firebase';
 
 import t from 'tcomb-form-native';
 import AppButton from '../components/AppButton';
 var Form = t.form.Form;
 
 
-export default class Login extends Component {
+
+export default class Register extends Component {
     validador;
+
+    static navigationOptions = {
+        title:'Registro',
+        headerTitleStyle:{
+            textAlign:'center',
+            alignSelf:'center',
+            fontSize:20,
+            color:'#fff',
+            fontWeight:'bold',
+            flex:1,
+            marginLeft:-15
+        }
+    }
 
     constructor(props) {
         super(props);
@@ -18,11 +33,32 @@ export default class Login extends Component {
             credentials:''
         }
     }
-    iniciarSesion = ()=>{
+    registrarme = ()=>{
         var value = this.refs.form.getValue();
         if(value){
+            // proceder con el registro
             console.log(value);
+            firebase.auth().createUserWithEmailAndPassword(value.email,value.password)
+                                            .then((response)=>{
+                                                console.log("Usuario ha sido creado con exito");
+                                                console.log(response);
+                                                // crear el usuario en la base de datos
+                                                firebase.database().ref().child('usuarios').child(response.user.uid).set({
+                                                    nombre:'Pepito',
+                                                    apellido:'Pepon'
+                                                }).then(()=>{
+                                                    console.log("usuario creado en la base de datos realtime");
+                                                }).catch(()=>{
+                                                    console.log("Error al crear el usuario en la base de datos real time");
+                                                })
+                                                
+                                            }).catch((error)=>{
+                                                console.log("ocurrió un error al crear el usuario");
+                                                console.log(error);
+                                            })
+
         }else{
+            // el error se generará
             console.log(value);
         }
     }
@@ -109,7 +145,7 @@ export default class Login extends Component {
                             bgColor={'rgba(111,38,74,0.7)'}
                             iconName={'sign-in'}
                             title={"Iniciar Sesión"}
-                            action={this.iniciarSesion}
+                            action={this.registrarme}
                             iconColor={"#fff"}
                             iconSize={30}
                             setWidth={false}

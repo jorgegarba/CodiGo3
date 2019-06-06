@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { View, Alert } from 'react-native'
 import { Card } from 'react-native-elements';
 import BackgroundImage from '../components/BackgroundImage';
 
+import * as firebase from 'firebase';
 
 import t from 'tcomb-form-native';
 import AppButton from '../components/AppButton';
 var Form = t.form.Form;
-
 
 export default class Login extends Component {
     validador;
@@ -17,6 +17,13 @@ export default class Login extends Component {
         var value = this.refs.form.getValue();
         if(value){
             console.log(value);
+            firebase.auth().signInWithEmailAndPassword(value.email,value.password)
+                                    .then(()=>{
+                                        Alert.alert("Éxito!","Inicio de sesión exitoso");
+                                    }).catch((error)=>{
+                                        Alert.alert("Error!","Ocurrió un error al inciar sesión");
+                                        console.log(error);
+                                    });
         }else{
             console.log(value);
         }
