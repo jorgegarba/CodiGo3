@@ -12,7 +12,12 @@ var Form = t.form.Form;
 export default class Login extends Component {
     validador;
 
-
+    constructor(props) {
+        super(props);
+        this.state = {
+            credentials:''
+        }
+    }
     iniciarSesion = ()=>{
         var value = this.refs.form.getValue();
         if(value){
@@ -24,6 +29,9 @@ export default class Login extends Component {
 
     guardarState(data){
         console.log(data);
+        this.setState({
+            credentials:data
+        });
     }
     
     render() {
@@ -44,7 +52,11 @@ export default class Login extends Component {
                 }
             }),
             validPassConfirm:t.refinement(t.String,(valor)=>{
-                
+                if(valor === this.state.credentials.password){
+                    return true;
+                }else{
+                    return false;
+                }
             }),
         }; 
 
@@ -85,6 +97,7 @@ export default class Login extends Component {
                 <View>
                     <Card title="Iniciar Sesión" wrapperStyle={{ paddingLeft: 10 }}>
                         <Form
+                            value={this.state.credentials}
                             ref="form"
                             type={User}
                             options={options}
