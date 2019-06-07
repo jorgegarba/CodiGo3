@@ -1,8 +1,11 @@
+import React from 'react';
 import { 
     createStackNavigator,
     createAppContainer,
     createDrawerNavigator
 } from 'react-navigation';
+
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import PlayasScreen from './../screens/playa/Playas';
 
@@ -10,7 +13,7 @@ const playasStackNavigator = createStackNavigator(
     {
         miPlayasScreen:{
             screen: PlayasScreen
-        }
+        },
     },
     {
         initialRouteName: 'miPlayasScreen',
@@ -33,7 +36,17 @@ const playasStackNavigator = createStackNavigator(
 const drawerNavigator = createDrawerNavigator(
     {
         miPlayasStackNavigator : {
-            screen: playasStackNavigator
+            screen: playasStackNavigator,
+            navigationOptions: ()=>{
+                return({
+                    drawerLabel: "Lista de Playas",
+                    drawerIcon: ()=>{
+                        return (<Icon name="home"
+                                        size={24}
+                                        style={{color:'white'}}/>)
+                    }
+                })
+            }
         },
     },
     {
