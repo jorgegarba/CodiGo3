@@ -9,7 +9,7 @@ import Invitado from './application/navigations/invitado';
 import firebaseConfig from './application/utils/firebase';
 // importar todas las funciones de firebase
 import * as firebase from 'firebase';
-import Playas from './application/screens/playa/Playas';
+import Logged from './application/navigations/logged';
 // inicializar la conexion a nuestra base de datos
 firebase.initializeApp(firebaseConfig);
 
@@ -49,7 +49,7 @@ export default class App extends React.Component {
       return(<PreLoader/>)
     }
     if (isLogged) {
-      return (<Playas/>)
+      return (<Logged/>)
     } else {
       return (
         <Invitado />
