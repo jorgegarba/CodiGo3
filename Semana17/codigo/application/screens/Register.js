@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { View, StyleSheet, ScrollView } from 'react-native'
 import { Card } from 'react-native-elements';
 import BackgroundImage from '../components/BackgroundImage';
 
@@ -9,92 +9,77 @@ import t from 'tcomb-form-native';
 import AppButton from '../components/AppButton';
 var Form = t.form.Form;
 
-
-
 export default class Register extends Component {
     validador;
-
-    static navigationOptions = {
-        title:'Registro',
-        headerTitleStyle:{
-            textAlign:'center',
-            alignSelf:'center',
-            fontSize:20,
-            color:'#fff',
-            fontWeight:'bold',
-            flex:1,
-            marginLeft:-15
-        }
-    }
 
     constructor(props) {
         super(props);
         this.state = {
-            credentials:''
+            credentials: ''
         }
     }
-    registrarme = ()=>{
+    registrarme = () => {
         var value = this.refs.form.getValue();
-        if(value){
+        if (value) {
             // proceder con el registro
             console.log(value);
-            firebase.auth().createUserWithEmailAndPassword(value.email,value.password)
-                                            .then((response)=>{
-                                                console.log("Usuario ha sido creado con exito");
-                                                console.log(response);
-                                                // crear el usuario en la base de datos
-                                                firebase.database().ref().child('usuarios').child(response.user.uid).set({
-                                                    nombre:'Pepito',
-                                                    apellido:'Pepon'
-                                                }).then(()=>{
-                                                    console.log("usuario creado en la base de datos realtime");
-                                                }).catch(()=>{
-                                                    console.log("Error al crear el usuario en la base de datos real time");
-                                                })
-                                                
-                                            }).catch((error)=>{
-                                                console.log("ocurrió un error al crear el usuario");
-                                                console.log(error);
-                                            })
+            firebase.auth().createUserWithEmailAndPassword(value.email, value.password)
+                .then((response) => {
+                    console.log("Usuario ha sido creado con exito");
+                    console.log(response);
+                    // crear el usuario en la base de datos
+                    firebase.database().ref().child('usuarios').child(response.user.uid).set({
+                        nombre: 'Pepito',
+                        apellido: 'Pepon'
+                    }).then(() => {
+                        console.log("usuario creado en la base de datos realtime");
+                    }).catch(() => {
+                        console.log("Error al crear el usuario en la base de datos real time");
+                    })
 
-        }else{
+                }).catch((error) => {
+                    console.log("ocurrió un error al crear el usuario");
+                    console.log(error);
+                })
+
+        } else {
             // el error se generará
             console.log(value);
         }
     }
 
-    guardarState(data){
+    guardarState(data) {
         console.log(data);
         this.setState({
-            credentials:data
+            credentials: data
         });
     }
-    
+
     render() {
 
         this.validador = {
-            validEmail: t.refinement(t.String,(valor)=>{
-                if(/@/.test(valor)){
+            validEmail: t.refinement(t.String, (valor) => {
+                if (/@/.test(valor)) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
             }),
-            validPass: t.refinement(t.String,(valor)=>{
-                if(valor.length >= 6){
+            validPass: t.refinement(t.String, (valor) => {
+                if (valor.length >= 6) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
             }),
-            validPassConfirm:t.refinement(t.String,(valor)=>{
-                if(valor === this.state.credentials.password){
+            validPassConfirm: t.refinement(t.String, (valor) => {
+                if (valor === this.state.credentials.password) {
                     return true;
-                }else{
+                } else {
                     return false;
                 }
             }),
-        }; 
+        };
 
         var User = t.struct({
             email: this.validador.validEmail,
@@ -118,7 +103,7 @@ export default class Register extends Component {
                     secureTextEntry: true,
                     label: 'Contraseña'
                 },
-                passwordConfirm:{
+                passwordConfirm: {
                     help: 'Confirma tu password',
                     error: 'Las contraseñas no coinciden',
                     password: true,
@@ -130,29 +115,51 @@ export default class Register extends Component {
 
         return (
             <BackgroundImage source={require('./../../assets/bg.jpg')}>
-                <View>
-                    <Card title="Iniciar Sesión" wrapperStyle={{ paddingLeft: 10 }}>
-                        <Form
-                            value={this.state.credentials}
-                            ref="form"
-                            type={User}
-                            options={options}
-                            onChange={(data)=>{
-                                this.guardarState(data);
-                            }}
-                        />
-                        <AppButton
-                            bgColor={'rgba(111,38,74,0.7)'}
-                            iconName={'sign-in'}
-                            title={"Iniciar Sesión"}
-                            action={this.registrarme}
-                            iconColor={"#fff"}
-                            iconSize={30}
-                            setWidth={false}
-                        />
-                    </Card>
-                </View>
+                <ScrollView style={estilos.scroll}>
+                    <View style={estilos.container}>
+                        <Card containerStyle={estilos.card} title="Iniciar Sesión" >
+                            <Form
+                                value={this.state.credentials}
+                                ref="form"
+                                type={User}
+                                options={options}
+                                onChange={(data) => {
+                                    this.guardarState(data);
+                                }}
+                            />
+                            <AppButton
+                                bgColor={'rgba(111,38,74,0.7)'}
+                                iconName={'sign-in'}
+                                title={"Iniciar Sesión"}
+                                action={this.registrarme}
+                                iconColor={"#fff"}
+                                iconSize={30}
+                                setWidth={false}
+                            />
+                        </Card>
+                    </View>
+                </ScrollView>
             </BackgroundImage>
         )
     }
 }
+
+
+var estilos = StyleSheet.create({
+    container: {
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignContent: 'center',
+        height: '100%',
+    },
+    card: {
+        width: '90%',
+        borderRadius: 10,
+        marginBottom: 20
+    },
+    scroll: {
+        paddingVertical: 20,
+        marginBottom: 20
+    }
+});
