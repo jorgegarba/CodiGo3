@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View } from 'react-native'
+import { Text, View, Alert, KeyboardAvoidingView} from 'react-native'
 import { Card } from 'react-native-elements';
 import BackgroundImage from './../../components/BackgroundImage';
 import * as firebase from 'firebase';
@@ -10,8 +10,42 @@ var Form = t.form.Form;
 
 export default class AddPlaya extends Component {
 
-    crearPlaya = ()=>{
+    constructor(props) {
+        super(props);
+        this.state = {
+            playa: {
+                capacidad: 0,
+                nombre: '',
+                direccion: '',
+                longitud: '',
+                latitud: '',
+            }
+        }
+        this.referencia = firebase.database().ref().child('playas');
+    }
 
+    crearPlaya = () => {
+        var value = this.refs.form.getValue();
+        if(value){
+            // obtener un identificador unico en la referencia
+            const id = this.referencia.push().key;
+            this.referencia.child(id).set({
+                nombre:this.state.playa.nombre,
+                capacidad:this.state.playa.capacidad,
+                direccion:this.state.playa.direccion,
+                lat:this.state.playa.latitud,
+                lng:this.state.playa.longitud,
+            }).then(()=>{
+                Alert.alert('Exito!','Se ha creado la playa correctamente');                
+                this.props.navigation.navigate('miPlayasScreen');
+            })
+        }
+    }
+
+    guardarState = (data) => {
+        this.setState({
+            playa:data
+        })
     }
 
     render() {
@@ -45,11 +79,16 @@ export default class AddPlaya extends Component {
         return (
             <BackgroundImage source={require('./../../../assets/bg.jpg')}>
                 <View>
-                    <Card title="Agregar una Playa" wrapperStyle={{ paddingLeft: 10 }}>
+                    <KeyboardAvoidingView behavior={'position'}>
+                        <Card title="Agregar una Playa" wrapperStyle={{ paddingLeft: 10 }}>
                         <Form
                             ref="form"
                             type={Playa}
                             options={options}
+                            onChange={(data) => {
+                                this.guardarState(data);
+                            }}
+                            value={this.state.playa}
                         />
                         <AppButton
                             bgColor={'rgba(255,38,74,0.8)'}
@@ -61,6 +100,7 @@ export default class AddPlaya extends Component {
                             setWidth={false}
                         />
                     </Card>
+                    </KeyboardAvoidingView>
                 </View>
             </BackgroundImage>
         )
