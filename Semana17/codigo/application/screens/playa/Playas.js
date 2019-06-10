@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import { Text, View, FlatList} from 'react-native'
 import {ListItem} from 'react-native-elements';
-
+import {NavigationActions} from 'react-navigation';
 import BackgroundImage from '../../components/BackgroundImage';
 import PlayaEmpty from '../../components/playa/PlayaEmpty';
 import * as firebase from 'firebase';
@@ -39,6 +39,16 @@ export default class Playas extends Component {
         });
     }
 
+    detallePlaya = (playa)=>{
+        const navegador = NavigationActions.navigate({
+            routeName: 'miDetallePlayaScreen',
+            params:{
+                playa:playa
+            }
+        });
+        this.props.navigation.dispatch(navegador);
+    }
+
     renderItems(item){
         return(
             <ListItem roundAvatar
@@ -52,6 +62,7 @@ export default class Playas extends Component {
                       titleStyle={{color:'white'}}
                       containerStyle={{padding:5,
                                 backgroundColor:'rgba(206,206,206,0.6)'}}
+                      onPress={()=>{this.detallePlaya(item)}}
             >
             </ListItem>
         )
