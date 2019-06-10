@@ -7,6 +7,7 @@ import BackgroundImage from '../../components/BackgroundImage';
 import PlayaEmpty from '../../components/playa/PlayaEmpty';
 import * as firebase from 'firebase';
 import PreLoader from '../../components/PreLoader';
+import PlayaAddButton from '../../components/playa/PlayaAddButton';
 export default class Playas extends Component {
 
     refPlayas;
@@ -72,6 +73,7 @@ export default class Playas extends Component {
                                     return data.id
                                 }}>
                         </FlatList>
+                        <PlayaAddButton/>
                     </BackgroundImage>
                 )
             } else {

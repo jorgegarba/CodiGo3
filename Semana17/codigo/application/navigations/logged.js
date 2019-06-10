@@ -8,6 +8,7 @@ import {
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 import PlayasScreen from './../screens/playa/Playas';
+import MapaScreen from './../screens/maps/Mapa';
 
 const playasStackNavigator = createStackNavigator(
     {
@@ -33,6 +34,32 @@ const playasStackNavigator = createStackNavigator(
     }
 );
 
+const mapasStackNavigator = createStackNavigator(
+    {
+        miMapaScreen:{
+            screen: MapaScreen
+        },
+    },
+    {
+        initialRouteName: 'miMapaScreen',
+        defaultNavigationOptions: {
+            headerStyle: {
+                backgroundColor: 'rgba(30,30,30,1)'
+            },
+            headerTitleStyle: {
+                textAlign: 'center',
+                alignSelf: 'center',
+                fontSize: 20,
+                color: '#fff',
+                fontWeight: 'bold',
+                flex: 1
+            }
+        }
+    }
+);
+
+
+
 const drawerNavigator = createDrawerNavigator(
     {
         miPlayasStackNavigator : {
@@ -42,6 +69,20 @@ const drawerNavigator = createDrawerNavigator(
                     drawerLabel: "Lista de Playas",
                     drawerIcon: ()=>{
                         return (<Icon name="home"
+                                        size={24}
+                                        style={{color:'white'}}/>)
+                    }
+                })
+            }
+        },
+
+        miMapaStackNavigator : {
+            screen: mapasStackNavigator,
+            navigationOptions: ()=>{
+                return({
+                    drawerLabel: "Mapa de Playas",
+                    drawerIcon: ()=>{
+                        return (<Icon name="map"
                                         size={24}
                                         style={{color:'white'}}/>)
                     }
