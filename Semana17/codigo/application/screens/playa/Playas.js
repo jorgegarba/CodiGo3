@@ -27,6 +27,7 @@ export default class Playas extends Component {
                     id: playa.key,
                     nombre: playa.val().nombre,
                     capacidad: playa.val().capacidad,
+                    direccion: playa.val().direccion,
                     lat: playa.val().lat,
                     lng: playa.val().lng,
                 };
