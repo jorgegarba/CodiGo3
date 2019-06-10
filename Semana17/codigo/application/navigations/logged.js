@@ -9,12 +9,16 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 import PlayasScreen from './../screens/playa/Playas';
 import MapaScreen from './../screens/maps/Mapa';
+import AddPlaya from './../screens/playa/AddPlaya';
 
 const playasStackNavigator = createStackNavigator(
     {
         miPlayasScreen:{
             screen: PlayasScreen
         },
+        miAgregarPlayasScreen:{
+            screen: AddPlaya
+        }
     },
     {
         initialRouteName: 'miPlayasScreen',

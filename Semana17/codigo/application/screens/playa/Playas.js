@@ -57,6 +57,10 @@ export default class Playas extends Component {
         )
     }
 
+    formularioPlaya = ()=>{
+        this.props.navigation.navigate('miAgregarPlayasScreen');
+    }
+
     render() {
         let { playas, cargado } = this.state;
         if (!cargado) {
@@ -73,7 +77,7 @@ export default class Playas extends Component {
                                     return data.id
                                 }}>
                         </FlatList>
-                        <PlayaAddButton/>
+                        <PlayaAddButton formularioPlaya={this.formularioPlaya}/>
                     </BackgroundImage>
                 )
             } else {
