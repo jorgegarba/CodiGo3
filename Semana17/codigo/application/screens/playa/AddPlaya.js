@@ -5,6 +5,7 @@ import BackgroundImage from './../../components/BackgroundImage';
 import * as firebase from 'firebase';
 import t from 'tcomb-form-native';
 import AppButton from './../../components/AppButton';
+import sliderTemplate from '../../components/playa/SliderTemplate';
 var Form = t.form.Form;
 
 
@@ -71,7 +72,14 @@ export default class AddPlaya extends Component {
                     placeholder: 'Ejm: Av. Progreso 244'
                 },
                 capacidad: {
-                    label: 'Capacidad de Vehiculos',
+                    label: 'Capacidad',
+                    help: 'Capacidad de Vehiculos',
+                    config: {
+                        step:1,
+                        max:200,
+                        min:1
+                    },
+                    template: sliderTemplate
                 },
             }
         };
