@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const mongoose_1 = require("./../config/mongoose");
+const jsreport = require('jsreport');
 // file system => libreria propia de node para manejar archivos
 var fs = require('fs');
 // path_module => libreria propia de node para manejar archivos
@@ -78,5 +79,19 @@ exports.video_controller = {
         else {
             return res.sendFile(path_module.resolve(rutaDefault));
         }
+    },
+    getReporte: (req, res) => {
+        jsreport.render({
+            template: {
+                content: "<h1>Hello world {{this.titulo}}</h1>",
+                engine: 'handlebars',
+                recipe: 'chrome-pdf'
+            },
+            data: { titulo: "Titulin" }
+        }).then((salida) => {
+            salida.stream.pipe(res);
+        }).catch((e) => {
+            res.end(e.message);
+        });
     }
 };

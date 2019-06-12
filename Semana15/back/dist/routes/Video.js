@@ -12,3 +12,4 @@ exports.video_router.get('/video', Video_1.video_controller.getAll);
 exports.video_router.delete('/video/:id', Video_1.video_controller.deleteById);
 exports.video_router.post('/video/upload/:id', multipartMiddleware, Video_1.video_controller.uploadImage);
 exports.video_router.get('/getImagenByName/:name', Video_1.video_controller.getImagenByName);
+exports.video_router.get('/reporteVideos', Video_1.video_controller.getReporte);

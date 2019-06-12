@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { Text, View, FlatList} from 'react-native'
+import {FlatList} from 'react-native'
 import {ListItem} from 'react-native-elements';
 import {NavigationActions} from 'react-navigation';
 import BackgroundImage from '../../components/BackgroundImage';
@@ -8,6 +8,9 @@ import PlayaEmpty from '../../components/playa/PlayaEmpty';
 import * as firebase from 'firebase';
 import PreLoader from '../../components/PreLoader';
 import PlayaAddButton from '../../components/playa/PlayaAddButton';
+
+import {Notifications, Permissions} from 'expo';
+
 export default class Playas extends Component {
 
     refPlayas;
@@ -19,7 +22,35 @@ export default class Playas extends Component {
         };
         this.refPlayas = firebase.database().ref().child('playas');
     }
+
+    registerForPushNotifications = async ()=>{
+        // chekar el status de los permisos
+        const {status} = await Permissions.getAsync(Permissions.NOTIFICATIONS);
+        let finalStatus = status;
+        
+        // si el permiso no existe, pedirlo al usuario 
+        if(status !== 'granted'){
+            const {status} = await Permissions.askAsync(Permissions.NOTIFICATIONS);
+            finalStatus = status;
+        }
+        // si aun asi no hay permisos, salir de la funcion
+        if(finalStatus !== 'granted'){return;}
+
+        //get push notification token
+        let token = await Notifications.getExpoPushTokenAsync();
+        console.log(token);
+        
+        //agregar token a firebase
+        let uid = firebase.auth().currentUser.uid;
+        firebase.database().ref().child(`usuarios/${uid}`).update({
+            tokenNotifications:token
+        })
+
+    }
+
     componentDidMount() {
+        this.registerForPushNotifications();
+
         this.refPlayas.on('value', (data) => {
             let playasList = [];
             data.forEach((playa) => {

@@ -1,6 +1,7 @@
 // VIDEO CONTROLLER
 import { Request, Response, response } from 'express';
 import {Video} from './../config/mongoose';
+const jsreport = require('jsreport');
 
 // file system => libreria propia de node para manejar archivos
 var fs = require('fs');
@@ -78,5 +79,20 @@ export var video_controller = {
         }else{
             return res.sendFile(path_module.resolve(rutaDefault));
         }
+    },
+
+    getReporte:(req:Request, res:Response)=>{
+        jsreport.render({
+            template: {
+                content: "<h1>Hello world {{this.titulo}}</h1>",
+                engine: 'handlebars',
+                recipe: 'chrome-pdf'
+              },
+              data:{titulo:"Titulin"}
+        }).then((salida:any)  => {
+            salida.stream.pipe(res);
+          }).catch((e:any) => {
+            res.end(e.message);
+        });
     }
 };
