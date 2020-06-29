@@ -16,7 +16,7 @@ class Camioneta extends Vehiculo{
      * Función que llama a la imprimirDatos para aumentar una linea
      * de impresión
      */
-    imprimirDatosCamioneta(){
+    imprimirDatosCamioneta = ()=>{
         this.imprimirDatos();
         console.log(`---- ¿ Turbado ? => ${this.turbo}`);
     }

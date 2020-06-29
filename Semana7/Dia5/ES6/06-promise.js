@@ -11,7 +11,7 @@ let promesa = ()=>{
         // reject("MAL!");
         setTimeout(() => {
             reject("Promesa Finalizada");
-        }, 3000);    
+        }, 3000);
     });
 };
 // then() =>  responde a la ejecución de la función

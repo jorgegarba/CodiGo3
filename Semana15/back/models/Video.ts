@@ -19,4 +19,3 @@ export var videoSchema = new Schema({
         }
     ]
 });
-

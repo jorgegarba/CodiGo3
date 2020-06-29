@@ -8,7 +8,7 @@ $(function(){
         // adicionalmente, recibe el tiempo que durará la
         // animación
         objetivo.animate({
-            cualquierCosa:100
+            iterador:100
         },{
            duration: 3000,
            step: function(valor){

@@ -26,7 +26,7 @@ saludar().then((respuesta)=>{
 
 let getDatos = async ()=>{
     let respuesta = await getNombreYApellidos();
-    console.log(respuesta);
+    // console.log(respuesta);
     return respuesta;
 };
 
